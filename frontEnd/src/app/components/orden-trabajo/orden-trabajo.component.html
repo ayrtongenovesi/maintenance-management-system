@@ -1,0 +1,240 @@
+<div class="ot-container">
+  <div class="spinner-overlay" *ngIf="isLoading || isSaving">
+    <mat-spinner diameter="60"></mat-spinner>
+    <p class="loading-text">{{ isLoading ? 'Cargando datos...' : 'Guardando orden...' }}</p>
+  </div>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidebar">
+      <div class="sidebar-content">
+        <div class="sidebar-header">
+          <img src="assets/UTNLOGO.png" alt="Logo UTN" class="logo">
+        </div>
+        <mat-nav-list class="nav-list">
+          <a mat-list-item routerLink="/ot" routerLinkActive="active-link">
+            <mat-icon>assignment</mat-icon>
+            <span>Orden de Trabajo</span>
+          </a>
+          <a mat-list-item routerLink="/historial" routerLinkActive="active-link">
+            <mat-icon>history</mat-icon>
+            <span>Historial</span>
+          </a>
+          <a mat-list-item routerLink="/gestion" routerLinkActive="active-link">
+            <mat-icon>settings</mat-icon>
+            <span>Gestión</span>
+          </a>
+          <a mat-list-item (click)="logout()" class="logout-btn">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar Sesión</span>
+          </a>
+        </mat-nav-list>
+
+        <div class="ot-info-card">
+          <div class="ot-info-header">
+            <mat-icon>admin_panel_settings</mat-icon>
+            <h3>Vista Admin</h3>
+          </div>
+          <p>Puede crear órdenes de trabajo, asignar operarios, generar PDF y acceder a gestión e historial con edición
+            completa.</p>
+        </div>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-icon class="toolbar-icon">assignment</mat-icon>
+        <span class="toolbar-title">Nueva Orden de Trabajo</span>
+        <span class="spacer"></span>
+        <button mat-icon-button matTooltip="Ayuda" (click)="mostrarAyuda()">
+          <mat-icon>help_outline</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <div class="content-wrapper">
+        <mat-card class="form-card fade-in">
+          <mat-card-header>
+            <mat-card-title>
+              <mat-icon>description</mat-icon>
+              Información de la Orden
+            </mat-card-title>
+            <mat-card-subtitle>Complete todos los campos para crear una orden de trabajo</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <form [formGroup]="ordenForm" (ngSubmit)="validarYGuardar()">
+              <div class="form-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Edificio</mat-label>
+                  <mat-select formControlName="edificio">
+                    <mat-option *ngFor="let edificio of datosEdificio" [value]="edificio.Nombre">
+                      {{ edificio.Nombre }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>business</mat-icon>
+                  <mat-error *ngIf="edificioControl?.hasError('required')">
+                    Seleccione un edificio
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Piso</mat-label>
+                  <mat-select formControlName="piso">
+                    <mat-option *ngFor="let piso of datosPiso" [value]="piso.Nombre">
+                      {{ piso.Nombre }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>layers</mat-icon>
+                  <mat-error *ngIf="pisoControl?.hasError('required')">
+                    Seleccione un piso
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Sector</mat-label>
+                  <mat-select formControlName="sector" [disabled]="!ordenForm.get('piso')?.value">
+                    <mat-option *ngFor="let sector of sectoresFiltrados" [value]="sector.Sector">
+                      {{ sector.Sector }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>location_on</mat-icon>
+                  <mat-hint *ngIf="!ordenForm.get('piso')?.value">Seleccione un piso primero</mat-hint>
+                  <mat-error *ngIf="sectorControl?.hasError('required')">
+                    Seleccione un sector
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Ubicación</mat-label>
+                  <mat-select formControlName="ubicacion">
+                    <mat-option *ngFor="let ubicacion of datosUbicacion" [value]="ubicacion.Nombre">
+                      {{ ubicacion.Nombre }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>room</mat-icon>
+                  <mat-error *ngIf="ubicacionControl?.hasError('required')">
+                    Seleccione una ubicación
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Tipo de Activo</mat-label>
+                  <mat-select formControlName="tipoActivo">
+                    <mat-option *ngFor="let activo of datosActivo" [value]="activo.Nombre">
+                      {{ activo.Nombre }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>category</mat-icon>
+                  <mat-error *ngIf="tipoActivoControl?.hasError('required')">
+                    Seleccione un tipo de activo
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Operario Asignado</mat-label>
+                  <mat-select formControlName="usuario">
+                    <mat-option *ngFor="let usuario of operariosDisponibles" [value]="usuario.id">
+                      {{ usuario.nombre }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>person</mat-icon>
+                  <mat-error *ngIf="usuarioControl?.hasError('required')">
+                    Seleccione un operario
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Tareas a Realizar</mat-label>
+                  <mat-select formControlName="tareas" multiple>
+                    <mat-option *ngFor="let tarea of datosTareas" [value]="tarea.Descripcion">
+                      {{ tarea.Descripcion }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>checklist</mat-icon>
+                  <mat-hint>Puede seleccionar múltiples tareas</mat-hint>
+                  <mat-error *ngIf="tareasControl?.hasError('required')">
+                    Seleccione al menos una tarea
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Fecha de Ejecución</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="fecha" [min]="minFecha">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-icon matPrefix>event</mat-icon>
+                  <mat-error *ngIf="fechaControl?.hasError('required')">
+                    Seleccione una fecha
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <mat-card-actions class="action-buttons">
+                <button mat-raised-button color="primary" type="submit" [disabled]="ordenForm.invalid || isSaving">
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  Crear orden y generar PDF
+                </button>
+                <button mat-stroked-button type="button" (click)="borradoForm()">
+                  <mat-icon>refresh</mat-icon>
+                  Limpiar Formulario
+                </button>
+              </mat-card-actions>
+            </form>
+          </mat-card-content>
+        </mat-card>
+
+        <div id="pdf-content" class="pdf-preview-hidden">
+          <div class="pdf-header">
+            <img src="https://frsc.cvg.utn.edu.ar/theme/image.php/snap/theme/1741635814/img/logo" alt="UTN"
+              class="pdf-logo">
+            <h2>Orden de Trabajo</h2>
+            <p class="pdf-date">Fecha de emisión: {{ ordenForm.value.fecha | date:'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="pdf-content">
+            <div class="pdf-row">
+              <strong>Edificio:</strong>
+              <span>{{ ordenForm.value.edificio }}</span>
+            </div>
+            <div class="pdf-row">
+              <strong>Piso:</strong>
+              <span>{{ ordenForm.value.piso }}</span>
+            </div>
+            <div class="pdf-row">
+              <strong>Sector:</strong>
+              <span>{{ ordenForm.value.sector }}</span>
+            </div>
+            <div class="pdf-row">
+              <strong>Ubicación:</strong>
+              <span>{{ ordenForm.value.ubicacion }}</span>
+            </div>
+            <div class="pdf-row">
+              <strong>Tipo de Activo:</strong>
+              <span>{{ ordenForm.value.tipoActivo }}</span>
+            </div>
+            <div class="pdf-row">
+              <strong>Operario:</strong>
+              <span>{{ nombreOperarioSeleccionado }}</span>
+            </div>
+            <div class="pdf-row">
+              <strong>Tareas:</strong>
+              <span>{{ ordenForm.value.tareas?.join(', ') }}</span>
+            </div>
+            <div class="pdf-row">
+              <strong>Fecha de Ejecución:</strong>
+              <span>{{ ordenForm.value.fecha | date:'dd/MM/yyyy' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<div class="notification" *ngIf="showNotification" [ngClass]="{
+       'success': notificationType === 'success',
+       'error': notificationType === 'error',
+       'info': notificationType === 'info'
+     }">
+  <mat-icon>{{ notificationType === 'success' ? 'check_circle' : notificationType === 'error' ? 'error' : 'info'
+    }}</mat-icon>
+  {{ notificationMessage }}
+</div>

@@ -1,0 +1,926 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proyectoutn documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">proyectoutn documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AyudaDialogComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/orden-trabajo/orden-trabajo.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-ayuda-dialog</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+    .ayuda-content {
+      padding: 16px 0;
+    }
+    
+    .ayuda-content h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #667eea;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .ayuda-content p {
+      margin: 8px 0;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .ayuda-content ol, .ayuda-content ul {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .ayuda-content li {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .ayuda-content strong {
+      color: #1f6cb0;
+    }
+
+    .ayuda-nota {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 4px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .ayuda-nota mat-icon {
+      color: #ff9800;
+      margin-top: 2px;
+    }
+
+    .ayuda-nota p {
+      margin: 0;
+      flex: 1;
+    }
+
+    ::ng-deep .mat-mdc-dialog-title {
+      display: flex;
+      align-items: center;
+      color: #667eea;
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+
+    ::ng-deep .mat-mdc-dialog-actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;h2 mat-dialog-title&gt;
+  &lt;mat-icon style&#x3D;&quot;vertical-align: middle; margin-right: 8px;&quot;&gt;help_outline&lt;/mat-icon&gt;
+  Ayuda - Orden de Trabajo
+&lt;/h2&gt;
+&lt;mat-dialog-content&gt;
+  &lt;div class&#x3D;&quot;ayuda-content&quot;&gt;
+    &lt;h3&gt;&lt;mat-icon&gt;info&lt;/mat-icon&gt; ¿Cómo funciona?&lt;/h3&gt;
+    &lt;p&gt;Esta sección permite crear nuevas órdenes de trabajo para el mantenimiento de activos en la universidad.&lt;/p&gt;
+
+    &lt;h3&gt;&lt;mat-icon&gt;checklist&lt;/mat-icon&gt; Pasos para crear una orden:&lt;/h3&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;Seleccione la ubicación:&lt;/strong&gt; Edificio, Piso, Sector y Ubicación específica&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Elija el activo:&lt;/strong&gt; Tipo de activo que requiere mantenimiento&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Asigne un operario:&lt;/strong&gt; Personal encargado de realizar las tareas&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Seleccione las tareas:&lt;/strong&gt; Puede elegir múltiples tareas de mantenimiento&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Defina la fecha:&lt;/strong&gt; Fecha programada para la ejecución&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;h3&gt;&lt;mat-icon&gt;tips_and_updates&lt;/mat-icon&gt; Funcionalidades:&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Crear Orden:&lt;/strong&gt; Guarda la orden en el sistema&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Generar PDF:&lt;/strong&gt; Crea un documento descargable con la información&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Limpiar Formulario:&lt;/strong&gt; Reinicia todos los campos&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class&#x3D;&quot;ayuda-nota&quot;&gt;
+      &lt;mat-icon&gt;warning&lt;/mat-icon&gt;
+      &lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Todos los campos son obligatorios. El sistema validará que la información esté completa antes de crear la orden.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/mat-dialog-content&gt;
+&lt;mat-dialog-actions align&#x3D;&quot;end&quot;&gt;
+  &lt;button mat-raised-button color&#x3D;&quot;primary&quot; mat-dialog-close&gt;
+    &lt;mat-icon&gt;check&lt;/mat-icon&gt;
+    Entendido
+  &lt;/button&gt;
+&lt;/mat-dialog-actions&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { ApiService } from &#x27;../../services/api.service&#x27;;
+import { UserService } from &#x27;../../services/user.service&#x27;;
+import { PdfService } from &#x27;../../services/pdf.service&#x27;;
+import { ActivoApi, CreateOTPayload, EdificioApi, PisoApi, SectorApi, TareaApi, UbicacionApi, UsuarioApi } from &#x27;../../interfaces/api-models&#x27;;
+
+@Component({
+    selector: &#x27;app-orden-trabajo&#x27;,
+    templateUrl: &#x27;./orden-trabajo.component.html&#x27;,
+    styleUrl: &#x27;./orden-trabajo.component.css&#x27;
+})
+export class OrdenTrabajoComponent implements OnInit {
+    ordenForm!: FormGroup;
+    minFecha: string &#x3D; new Date().toISOString().split(&#x27;T&#x27;)[0];
+    pdfUrl: string &#x3D; &#x27;&#x27;;
+    isLoading &#x3D; false;
+    isSaving &#x3D; false;
+
+    notificationMessage &#x3D; &#x27;&#x27;;
+    notificationType &#x3D; &#x27;info&#x27;;
+    showNotification &#x3D; false;
+    private timeoutRef: ReturnType&lt;typeof setTimeout&gt; | null &#x3D; null;
+
+    datosPiso: PisoApi[] &#x3D; [];
+    datosEdificio: EdificioApi[] &#x3D; [];
+    datosUsuario: UsuarioApi[] &#x3D; [];
+    datosActivo: ActivoApi[] &#x3D; [];
+    datosUbicacion: UbicacionApi[] &#x3D; [];
+    datosSector: SectorApi[] &#x3D; [];
+    datosTareas: TareaApi[] &#x3D; [];
+
+    constructor(
+        private fb: FormBuilder,
+        private api: ApiService,
+        private userService: UserService,
+        private pdf: PdfService,
+        private dialog: MatDialog
+    ) { }
+
+    ngOnInit(): void {
+        this.initForm();
+        this.loadAllData();
+    }
+
+    private initForm(): void {
+        this.ordenForm &#x3D; this.fb.group({
+            edificio: [&#x27;&#x27;, Validators.required],
+            piso: [&#x27;&#x27;, Validators.required],
+            sector: [&#x27;&#x27;, Validators.required],
+            ubicacion: [&#x27;&#x27;, Validators.required],
+            tipoActivo: [&#x27;&#x27;, Validators.required],
+            usuario: [&#x27;&#x27;, Validators.required],
+            tareas: [[], Validators.required],
+            fecha: [this.minFecha, Validators.required]
+        });
+    }
+
+    private loadAllData(): void {
+        this.isLoading &#x3D; true;
+        Promise.all([
+            this.dataPiso(),
+            this.dataEdificio(),
+            this.dataUsuario(),
+            this.dataActivo(),
+            this.dataUbicacion(),
+            this.dataSector(),
+            this.dataTareas()
+        ]).finally(() &#x3D;&gt; {
+            this.isLoading &#x3D; false;
+        });
+    }
+
+    private mostrarNotificacion(message: string, type: string): void {
+        this.notificationMessage &#x3D; message;
+        this.notificationType &#x3D; type;
+        this.showNotification &#x3D; true;
+        if (this.timeoutRef !&#x3D;&#x3D; null) clearTimeout(this.timeoutRef);
+        this.timeoutRef &#x3D; setTimeout(() &#x3D;&gt; this.showNotification &#x3D; false, 3000);
+    }
+
+    logout(): void {
+        this.userService.logout();
+        window.location.href &#x3D; &#x27;/login&#x27;;
+    }
+
+    mostrarAyuda(): void {
+        this.dialog.open(AyudaDialogComponent, {
+            width: &#x27;600px&#x27;,
+            maxWidth: &#x27;90vw&#x27;
+        });
+    }
+
+    private dataPiso(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getPisos().subscribe({
+                next: (data: PisoApi[]) &#x3D;&gt; {
+                    this.datosPiso &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataEdificio(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getEdificios().subscribe({
+                next: (data: EdificioApi[]) &#x3D;&gt; {
+                    this.datosEdificio &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataSector(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getSectores().subscribe({
+                next: (data: SectorApi[]) &#x3D;&gt; {
+                    this.datosSector &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataUsuario(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getUsuarios().subscribe({
+                next: (data: UsuarioApi[]) &#x3D;&gt; {
+                    this.datosUsuario &#x3D; data.map((u) &#x3D;&gt; ({
+                        ...u,
+                        rol: u.rol &#x3D;&#x3D;&#x3D; &#x27;administrador&#x27; || u.rol &#x3D;&#x3D;&#x3D; &#x27;operario&#x27; ? u.rol : undefined,
+                    }));
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataActivo(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getActivos().subscribe({
+                next: (data: ActivoApi[]) &#x3D;&gt; {
+                    this.datosActivo &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataUbicacion(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getUbicaciones().subscribe({
+                next: (data: UbicacionApi[]) &#x3D;&gt; {
+                    this.datosUbicacion &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataTareas(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getTareas().subscribe({
+                next: (data: TareaApi[]) &#x3D;&gt; {
+                    this.datosTareas &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    validarYGuardar(): void {
+        if (this.ordenForm.invalid) {
+            this.mostrarNotificacion(&#x27;Por favor, complete todos los campos requeridos.&#x27;, &#x27;error&#x27;);
+            Object.keys(this.ordenForm.controls).forEach(key &#x3D;&gt; {
+                this.ordenForm.get(key)?.markAsTouched();
+            });
+            return;
+        }
+        this.guardarEnOT();
+    }
+
+    guardarEnOT(): void {
+        this.isSaving &#x3D; true;
+        const formValue &#x3D; this.ordenForm.value;
+
+        const fechaNormalizada &#x3D; formValue.fecha ? new Date(formValue.fecha).toISOString().split(&#x27;T&#x27;)[0] : this.minFecha;
+
+        const tareasArray: string[] &#x3D; Array.isArray(formValue.tareas)
+            ? (formValue.tareas as string[])
+            : [formValue.tareas as string];
+        const tareasJoin &#x3D; tareasArray.filter((t: string) &#x3D;&gt; !!t &amp;&amp; t.trim().length &gt; 0).join(&#x27;, &#x27;);
+
+        if (tareasJoin.length &gt; 500) {
+            this.mostrarNotificacion(&#x60;Las tareas seleccionadas (${tareasJoin.length} caracteres) exceden el límite de 500. Deseleccione algunas tareas.&#x60;, &#x27;error&#x27;);
+            this.isSaving &#x3D; false;
+            return;
+        }
+
+        const edificioSeleccionado &#x3D; this.datosEdificio.find(e &#x3D;&gt; e.Nombre &#x3D;&#x3D;&#x3D; formValue.edificio);
+        const pisoSeleccionado &#x3D; this.datosPiso.find(p &#x3D;&gt; p.Nombre &#x3D;&#x3D;&#x3D; formValue.piso);
+        const sectorSeleccionado &#x3D; this.datosSector.find(s &#x3D;&gt; s.Sector &#x3D;&#x3D;&#x3D; formValue.sector);
+        const ubicacionSeleccionada &#x3D; this.datosUbicacion.find(u &#x3D;&gt; u.Nombre &#x3D;&#x3D;&#x3D; formValue.ubicacion);
+        const activoSeleccionado &#x3D; this.datosActivo.find(a &#x3D;&gt; a.Nombre &#x3D;&#x3D;&#x3D; formValue.tipoActivo);
+        const usuarioIdSeleccionado &#x3D; Number(formValue.usuario);
+        const usuarioSeleccionado &#x3D; this.datosUsuario.find(u &#x3D;&gt; u.id &#x3D;&#x3D;&#x3D; usuarioIdSeleccionado);
+
+        if (!edificioSeleccionado || !pisoSeleccionado || !sectorSeleccionado ||
+            !ubicacionSeleccionada || !activoSeleccionado || !usuarioSeleccionado) {
+            this.mostrarNotificacion(&#x27;Error al mapear los datos seleccionados&#x27;, &#x27;error&#x27;);
+            this.isSaving &#x3D; false;
+            return;
+        }
+
+        const edificioId &#x3D; edificioSeleccionado.id;
+        const pisoId &#x3D; pisoSeleccionado.id;
+        const sectorId &#x3D; sectorSeleccionado.id;
+        const ubicacionId &#x3D; ubicacionSeleccionada.id;
+        const activoId &#x3D; activoSeleccionado.id;
+        const usuarioId &#x3D; usuarioSeleccionado.id;
+        const tareasIds &#x3D; this.datosTareas
+            .filter(t &#x3D;&gt; tareasArray.includes(t.Descripcion))
+            .map(t &#x3D;&gt; t.id);
+
+        const datosNormalizados: CreateOTPayload &#x3D; {
+            edificioId,
+            pisoId,
+            sectorId,
+            ubicacionId,
+            activoId,
+            usuarioId,
+            tareasIds,
+            fecha: fechaNormalizada,
+            estado: &#x27;Pendiente&#x27;
+        };
+
+        this.api.createOT(datosNormalizados).subscribe({
+            next: async () &#x3D;&gt; {
+                this.isSaving &#x3D; false;
+                this.mostrarNotificacion(&#x27;Orden de trabajo creada exitosamente&#x27;, &#x27;success&#x27;);
+                await this.generatePDF();
+                this.borradoForm();
+            },
+            error: (err) &#x3D;&gt; {
+                this.isSaving &#x3D; false;
+                const backendMsg &#x3D; err?.error?.message || err?.message || &#x27;Error al guardar la orden de trabajo&#x27;;
+                this.mostrarNotificacion(backendMsg, &#x27;error&#x27;);
+            }
+        });
+    }
+
+    borradoForm(): void {
+        this.ordenForm.reset({
+            fecha: this.minFecha
+        });
+        this.pdfUrl &#x3D; &#x27;&#x27;;
+    }
+
+    imprimirPagina(): void {
+        window.print();
+    }
+
+    async generatePDF(): Promise&lt;void&gt; {
+        if (this.ordenForm.invalid) {
+            this.mostrarNotificacion(&#x27;Complete todos los campos antes de generar el PDF.&#x27;, &#x27;error&#x27;);
+            return;
+        }
+
+        const dataUrl &#x3D; await this.pdf.elementToPdf(&#x27;pdf-content&#x27;, &#x27;ordenDeTrabajo.pdf&#x27;);
+        if (dataUrl) {
+            this.pdfUrl &#x3D; dataUrl;
+            this.mostrarNotificacion(&#x27;PDF generado correctamente.&#x27;, &#x27;success&#x27;);
+        } else {
+            this.mostrarNotificacion(&#x27;Error al generar el PDF.&#x27;, &#x27;error&#x27;);
+        }
+    }
+
+    get edificioControl() { return this.ordenForm.get(&#x27;edificio&#x27;); }
+    get pisoControl() { return this.ordenForm.get(&#x27;piso&#x27;); }
+    get sectorControl() { return this.ordenForm.get(&#x27;sector&#x27;); }
+    get ubicacionControl() { return this.ordenForm.get(&#x27;ubicacion&#x27;); }
+    get tipoActivoControl() { return this.ordenForm.get(&#x27;tipoActivo&#x27;); }
+    get usuarioControl() { return this.ordenForm.get(&#x27;usuario&#x27;); }
+    get tareasControl() { return this.ordenForm.get(&#x27;tareas&#x27;); }
+    get fechaControl() { return this.ordenForm.get(&#x27;fecha&#x27;); }
+
+    get operariosDisponibles(): UsuarioApi[] {
+        return this.datosUsuario.filter((usuario) &#x3D;&gt; usuario.rol &#x3D;&#x3D;&#x3D; &#x27;operario&#x27;);
+    }
+
+    get nombreOperarioSeleccionado(): string {
+        const usuarioIdSeleccionado &#x3D; Number(this.ordenForm.value.usuario);
+        const usuarioSeleccionado &#x3D; this.datosUsuario.find((usuario) &#x3D;&gt; usuario.id &#x3D;&#x3D;&#x3D; usuarioIdSeleccionado);
+        return usuarioSeleccionado?.nombre || &#x27;&#x27;;
+    }
+}
+
+
+@Component({
+    selector: &#x27;app-ayuda-dialog&#x27;,
+    template: &#x60;
+    &lt;h2 mat-dialog-title&gt;
+      &lt;mat-icon style&#x3D;&quot;vertical-align: middle; margin-right: 8px;&quot;&gt;help_outline&lt;/mat-icon&gt;
+      Ayuda - Orden de Trabajo
+    &lt;/h2&gt;
+    &lt;mat-dialog-content&gt;
+      &lt;div class&#x3D;&quot;ayuda-content&quot;&gt;
+        &lt;h3&gt;&lt;mat-icon&gt;info&lt;/mat-icon&gt; ¿Cómo funciona?&lt;/h3&gt;
+        &lt;p&gt;Esta sección permite crear nuevas órdenes de trabajo para el mantenimiento de activos en la universidad.&lt;/p&gt;
+        
+        &lt;h3&gt;&lt;mat-icon&gt;checklist&lt;/mat-icon&gt; Pasos para crear una orden:&lt;/h3&gt;
+        &lt;ol&gt;
+          &lt;li&gt;&lt;strong&gt;Seleccione la ubicación:&lt;/strong&gt; Edificio, Piso, Sector y Ubicación específica&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Elija el activo:&lt;/strong&gt; Tipo de activo que requiere mantenimiento&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Asigne un operario:&lt;/strong&gt; Personal encargado de realizar las tareas&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Seleccione las tareas:&lt;/strong&gt; Puede elegir múltiples tareas de mantenimiento&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Defina la fecha:&lt;/strong&gt; Fecha programada para la ejecución&lt;/li&gt;
+        &lt;/ol&gt;
+
+        &lt;h3&gt;&lt;mat-icon&gt;tips_and_updates&lt;/mat-icon&gt; Funcionalidades:&lt;/h3&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Crear Orden:&lt;/strong&gt; Guarda la orden en el sistema&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Generar PDF:&lt;/strong&gt; Crea un documento descargable con la información&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Limpiar Formulario:&lt;/strong&gt; Reinicia todos los campos&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class&#x3D;&quot;ayuda-nota&quot;&gt;
+          &lt;mat-icon&gt;warning&lt;/mat-icon&gt;
+          &lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Todos los campos son obligatorios. El sistema validará que la información esté completa antes de crear la orden.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/mat-dialog-content&gt;
+    &lt;mat-dialog-actions align&#x3D;&quot;end&quot;&gt;
+      &lt;button mat-raised-button color&#x3D;&quot;primary&quot; mat-dialog-close&gt;
+        &lt;mat-icon&gt;check&lt;/mat-icon&gt;
+        Entendido
+      &lt;/button&gt;
+    &lt;/mat-dialog-actions&gt;
+  &#x60;,
+    styles: [&#x60;
+    .ayuda-content {
+      padding: 16px 0;
+    }
+    
+    .ayuda-content h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #667eea;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .ayuda-content p {
+      margin: 8px 0;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .ayuda-content ol, .ayuda-content ul {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .ayuda-content li {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .ayuda-content strong {
+      color: #1f6cb0;
+    }
+
+    .ayuda-nota {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 4px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .ayuda-nota mat-icon {
+      color: #ff9800;
+      margin-top: 2px;
+    }
+
+    .ayuda-nota p {
+      margin: 0;
+      flex: 1;
+    }
+
+    ::ng-deep .mat-mdc-dialog-title {
+      display: flex;
+      align-items: center;
+      color: #667eea;
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+
+    ::ng-deep .mat-mdc-dialog-actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  &#x60;]
+})
+export class AyudaDialogComponent { }
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="styleData">
+            <pre class="line-numbers"><code class="language-scss">
+    .ayuda-content {
+      padding: 16px 0;
+    }
+    
+    .ayuda-content h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #667eea;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .ayuda-content p {
+      margin: 8px 0;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .ayuda-content ol, .ayuda-content ul {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .ayuda-content li {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .ayuda-content strong {
+      color: #1f6cb0;
+    }
+
+    .ayuda-nota {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 4px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .ayuda-nota mat-icon {
+      color: #ff9800;
+      margin-top: 2px;
+    }
+
+    .ayuda-nota p {
+      margin: 0;
+      flex: 1;
+    }
+
+    ::ng-deep .mat-mdc-dialog-title {
+      display: flex;
+      align-items: center;
+      color: #667eea;
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+
+    ::ng-deep .mat-mdc-dialog-actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h2 mat-dialog-title>  <mat-icon style="vertical-align: middle; margin-right: 8px;">help_outline</mat-icon>  Ayuda - Orden de Trabajo</h2><mat-dialog-content>  <div class="ayuda-content">    <h3><mat-icon>info</mat-icon> ¿Cómo funciona?</h3>    <p>Esta sección permite crear nuevas órdenes de trabajo para el mantenimiento de activos en la universidad.</p>    <h3><mat-icon>checklist</mat-icon> Pasos para crear una orden:</h3>    <ol>      <li><strong>Seleccione la ubicación:</strong> Edificio, Piso, Sector y Ubicación específica</li>      <li><strong>Elija el activo:</strong> Tipo de activo que requiere mantenimiento</li>      <li><strong>Asigne un operario:</strong> Personal encargado de realizar las tareas</li>      <li><strong>Seleccione las tareas:</strong> Puede elegir múltiples tareas de mantenimiento</li>      <li><strong>Defina la fecha:</strong> Fecha programada para la ejecución</li>    </ol>    <h3><mat-icon>tips_and_updates</mat-icon> Funcionalidades:</h3>    <ul>      <li><strong>Crear Orden:</strong> Guarda la orden en el sistema</li>      <li><strong>Generar PDF:</strong> Crea un documento descargable con la información</li>      <li><strong>Limpiar Formulario:</strong> Reinicia todos los campos</li>    </ul>    <div class="ayuda-nota">      <mat-icon>warning</mat-icon>      <p><strong>Nota:</strong> Todos los campos son obligatorios. El sistema validará que la información esté completa antes de crear la orden.</p>    </div>  </div></mat-dialog-content><mat-dialog-actions align="end">  <button mat-raised-button color="primary" mat-dialog-close>    <mat-icon>check</mat-icon>    Entendido  </button></mat-dialog-actions></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AyudaDialogComponent', 'selector': 'app-ayuda-dialog'},{'name': 'GestionComponent', 'selector': 'app-gestion'},{'name': 'HistorialComponent', 'selector': 'app-historial'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'OrdenTrabajoComponent', 'selector': 'app-orden-trabajo'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AyudaDialogComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AyudaDialogComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

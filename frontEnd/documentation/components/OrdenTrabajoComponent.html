@@ -1,0 +1,2738 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proyectoutn documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">proyectoutn documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  OrdenTrabajoComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/orden-trabajo/orden-trabajo.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-orden-trabajo</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./orden-trabajo.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./orden-trabajo.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#datosActivo" >datosActivo</a>
+                            </li>
+                            <li>
+                                <a href="#datosEdificio" >datosEdificio</a>
+                            </li>
+                            <li>
+                                <a href="#datosPiso" >datosPiso</a>
+                            </li>
+                            <li>
+                                <a href="#datosSector" >datosSector</a>
+                            </li>
+                            <li>
+                                <a href="#datosTareas" >datosTareas</a>
+                            </li>
+                            <li>
+                                <a href="#datosUbicacion" >datosUbicacion</a>
+                            </li>
+                            <li>
+                                <a href="#datosUsuario" >datosUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                <a href="#isSaving" >isSaving</a>
+                            </li>
+                            <li>
+                                <a href="#minFecha" >minFecha</a>
+                            </li>
+                            <li>
+                                <a href="#notificationMessage" >notificationMessage</a>
+                            </li>
+                            <li>
+                                <a href="#notificationType" >notificationType</a>
+                            </li>
+                            <li>
+                                <a href="#ordenForm" >ordenForm</a>
+                            </li>
+                            <li>
+                                <a href="#pdfUrl" >pdfUrl</a>
+                            </li>
+                            <li>
+                                <a href="#showNotification" >showNotification</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#timeoutRef" >timeoutRef</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#borradoForm" >borradoForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataActivo" >dataActivo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataEdificio" >dataEdificio</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataPiso" >dataPiso</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataSector" >dataSector</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataTareas" >dataTareas</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataUbicacion" >dataUbicacion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dataUsuario" >dataUsuario</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#generatePDF" >generatePDF</a>
+                            </li>
+                            <li>
+                                <a href="#guardarEnOT" >guardarEnOT</a>
+                            </li>
+                            <li>
+                                <a href="#imprimirPagina" >imprimirPagina</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initForm" >initForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadAllData" >loadAllData</a>
+                            </li>
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarAyuda" >mostrarAyuda</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mostrarNotificacion" >mostrarNotificacion</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#validarYGuardar" >validarYGuardar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#edificioControl" >edificioControl</a>
+                                </li>
+                                <li>
+                                    <a href="#pisoControl" >pisoControl</a>
+                                </li>
+                                <li>
+                                    <a href="#sectorControl" >sectorControl</a>
+                                </li>
+                                <li>
+                                    <a href="#ubicacionControl" >ubicacionControl</a>
+                                </li>
+                                <li>
+                                    <a href="#tipoActivoControl" >tipoActivoControl</a>
+                                </li>
+                                <li>
+                                    <a href="#usuarioControl" >usuarioControl</a>
+                                </li>
+                                <li>
+                                    <a href="#tareasControl" >tareasControl</a>
+                                </li>
+                                <li>
+                                    <a href="#fechaControl" >fechaControl</a>
+                                </li>
+                                <li>
+                                    <a href="#operariosDisponibles" >operariosDisponibles</a>
+                                </li>
+                                <li>
+                                    <a href="#nombreOperarioSeleccionado" >nombreOperarioSeleccionado</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, api: <a href="../injectables/ApiService.html" target="_self">ApiService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, pdf: <a href="../injectables/PdfService.html" target="_self">PdfService</a>, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiService.html" target="_self" >ApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>pdf</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PdfService.html" target="_self" >PdfService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="borradoForm"></a>
+                    <span class="name">
+                        <span ><b>borradoForm</b></span>
+                        <a href="#borradoForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>borradoForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="262"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:262</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataActivo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataActivo</b></span>
+                        <a href="#dataActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dataActivo()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataEdificio"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataEdificio</b></span>
+                        <a href="#dataEdificio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dataEdificio()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataPiso"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataPiso</b></span>
+                        <a href="#dataPiso"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dataPiso()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSector"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataSector</b></span>
+                        <a href="#dataSector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dataSector()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataTareas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataTareas</b></span>
+                        <a href="#dataTareas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dataTareas()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="170"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:170</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataUbicacion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataUbicacion</b></span>
+                        <a href="#dataUbicacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dataUbicacion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataUsuario"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dataUsuario</b></span>
+                        <a href="#dataUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>dataUsuario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:131</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generatePDF"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>generatePDF</b></span>
+                        <a href="#generatePDF"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generatePDF()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="273"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:273</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarEnOT"></a>
+                    <span class="name">
+                        <span ><b>guardarEnOT</b></span>
+                        <a href="#guardarEnOT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarEnOT()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="193"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:193</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="imprimirPagina"></a>
+                    <span class="name">
+                        <span ><b>imprimirPagina</b></span>
+                        <a href="#imprimirPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>imprimirPagina()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="269"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:269</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>initForm</b></span>
+                        <a href="#initForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadAllData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadAllData</b></span>
+                        <a href="#loadAllData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadAllData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarAyuda"></a>
+                    <span class="name">
+                        <span ><b>mostrarAyuda</b></span>
+                        <a href="#mostrarAyuda"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>mostrarAyuda()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarNotificacion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>mostrarNotificacion</b></span>
+                        <a href="#mostrarNotificacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>mostrarNotificacion(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validarYGuardar"></a>
+                    <span class="name">
+                        <span ><b>validarYGuardar</b></span>
+                        <a href="#validarYGuardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validarYGuardar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="182"
+                                    class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:182</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosActivo"></a>
+                    <span class="name">
+                        <span ><b>datosActivo</b></span>
+                        <a href="#datosActivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ActivoApi.html" target="_self" >ActivoApi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosEdificio"></a>
+                    <span class="name">
+                        <span ><b>datosEdificio</b></span>
+                        <a href="#datosEdificio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/EdificioApi.html" target="_self" >EdificioApi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosPiso"></a>
+                    <span class="name">
+                        <span ><b>datosPiso</b></span>
+                        <a href="#datosPiso"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/PisoApi.html" target="_self" >PisoApi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosSector"></a>
+                    <span class="name">
+                        <span ><b>datosSector</b></span>
+                        <a href="#datosSector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/SectorApi.html" target="_self" >SectorApi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosTareas"></a>
+                    <span class="name">
+                        <span ><b>datosTareas</b></span>
+                        <a href="#datosTareas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/TareaApi.html" target="_self" >TareaApi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosUbicacion"></a>
+                    <span class="name">
+                        <span ><b>datosUbicacion</b></span>
+                        <a href="#datosUbicacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UbicacionApi.html" target="_self" >UbicacionApi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosUsuario"></a>
+                    <span class="name">
+                        <span ><b>datosUsuario</b></span>
+                        <a href="#datosUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UsuarioApi.html" target="_self" >UsuarioApi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSaving"></a>
+                    <span class="name">
+                        <span ><b>isSaving</b></span>
+                        <a href="#isSaving"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="minFecha"></a>
+                    <span class="name">
+                        <span ><b>minFecha</b></span>
+                        <a href="#minFecha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Date().toISOString().split(&#x27;T&#x27;)[0]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="notificationMessage"></a>
+                    <span class="name">
+                        <span ><b>notificationMessage</b></span>
+                        <a href="#notificationMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="notificationType"></a>
+                    <span class="name">
+                        <span ><b>notificationType</b></span>
+                        <a href="#notificationType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;info&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ordenForm"></a>
+                    <span class="name">
+                        <span ><b>ordenForm</b></span>
+                        <a href="#ordenForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pdfUrl"></a>
+                    <span class="name">
+                        <span ><b>pdfUrl</b></span>
+                        <a href="#pdfUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showNotification"></a>
+                    <span class="name">
+                        <span ><b>showNotification</b></span>
+                        <a href="#showNotification"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timeoutRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>timeoutRef</b></span>
+                        <a href="#timeoutRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ReturnType&lt;unknown&gt; | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edificioControl"></a>
+                        <span class="name"><b>edificioControl</b><a href="#edificioControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>edificioControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="288" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:288</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pisoControl"></a>
+                        <span class="name"><b>pisoControl</b><a href="#pisoControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>pisoControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="289" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:289</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sectorControl"></a>
+                        <span class="name"><b>sectorControl</b><a href="#sectorControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sectorControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="290" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:290</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ubicacionControl"></a>
+                        <span class="name"><b>ubicacionControl</b><a href="#ubicacionControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>ubicacionControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="291" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:291</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tipoActivoControl"></a>
+                        <span class="name"><b>tipoActivoControl</b><a href="#tipoActivoControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tipoActivoControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:292</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="usuarioControl"></a>
+                        <span class="name"><b>usuarioControl</b><a href="#usuarioControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>usuarioControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="293" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:293</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tareasControl"></a>
+                        <span class="name"><b>tareasControl</b><a href="#tareasControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tareasControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="294" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:294</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fechaControl"></a>
+                        <span class="name"><b>fechaControl</b><a href="#fechaControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>fechaControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="295" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:295</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="operariosDisponibles"></a>
+                        <span class="name"><b>operariosDisponibles</b><a href="#operariosDisponibles"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>operariosDisponibles()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="297" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:297</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nombreOperarioSeleccionado"></a>
+                        <span class="name"><b>nombreOperarioSeleccionado</b><a href="#nombreOperarioSeleccionado"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>nombreOperarioSeleccionado()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="301" class="link-to-prism">src/app/components/orden-trabajo/orden-trabajo.component.ts:301</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { ApiService } from &#x27;../../services/api.service&#x27;;
+import { UserService } from &#x27;../../services/user.service&#x27;;
+import { PdfService } from &#x27;../../services/pdf.service&#x27;;
+import { ActivoApi, CreateOTPayload, EdificioApi, PisoApi, SectorApi, TareaApi, UbicacionApi, UsuarioApi } from &#x27;../../interfaces/api-models&#x27;;
+
+@Component({
+    selector: &#x27;app-orden-trabajo&#x27;,
+    templateUrl: &#x27;./orden-trabajo.component.html&#x27;,
+    styleUrl: &#x27;./orden-trabajo.component.css&#x27;
+})
+export class OrdenTrabajoComponent implements OnInit {
+    ordenForm!: FormGroup;
+    minFecha: string &#x3D; new Date().toISOString().split(&#x27;T&#x27;)[0];
+    pdfUrl: string &#x3D; &#x27;&#x27;;
+    isLoading &#x3D; false;
+    isSaving &#x3D; false;
+
+    notificationMessage &#x3D; &#x27;&#x27;;
+    notificationType &#x3D; &#x27;info&#x27;;
+    showNotification &#x3D; false;
+    private timeoutRef: ReturnType&lt;typeof setTimeout&gt; | null &#x3D; null;
+
+    datosPiso: PisoApi[] &#x3D; [];
+    datosEdificio: EdificioApi[] &#x3D; [];
+    datosUsuario: UsuarioApi[] &#x3D; [];
+    datosActivo: ActivoApi[] &#x3D; [];
+    datosUbicacion: UbicacionApi[] &#x3D; [];
+    datosSector: SectorApi[] &#x3D; [];
+    datosTareas: TareaApi[] &#x3D; [];
+
+    constructor(
+        private fb: FormBuilder,
+        private api: ApiService,
+        private userService: UserService,
+        private pdf: PdfService,
+        private dialog: MatDialog
+    ) { }
+
+    ngOnInit(): void {
+        this.initForm();
+        this.loadAllData();
+    }
+
+    private initForm(): void {
+        this.ordenForm &#x3D; this.fb.group({
+            edificio: [&#x27;&#x27;, Validators.required],
+            piso: [&#x27;&#x27;, Validators.required],
+            sector: [&#x27;&#x27;, Validators.required],
+            ubicacion: [&#x27;&#x27;, Validators.required],
+            tipoActivo: [&#x27;&#x27;, Validators.required],
+            usuario: [&#x27;&#x27;, Validators.required],
+            tareas: [[], Validators.required],
+            fecha: [this.minFecha, Validators.required]
+        });
+    }
+
+    private loadAllData(): void {
+        this.isLoading &#x3D; true;
+        Promise.all([
+            this.dataPiso(),
+            this.dataEdificio(),
+            this.dataUsuario(),
+            this.dataActivo(),
+            this.dataUbicacion(),
+            this.dataSector(),
+            this.dataTareas()
+        ]).finally(() &#x3D;&gt; {
+            this.isLoading &#x3D; false;
+        });
+    }
+
+    private mostrarNotificacion(message: string, type: string): void {
+        this.notificationMessage &#x3D; message;
+        this.notificationType &#x3D; type;
+        this.showNotification &#x3D; true;
+        if (this.timeoutRef !&#x3D;&#x3D; null) clearTimeout(this.timeoutRef);
+        this.timeoutRef &#x3D; setTimeout(() &#x3D;&gt; this.showNotification &#x3D; false, 3000);
+    }
+
+    logout(): void {
+        this.userService.logout();
+        window.location.href &#x3D; &#x27;/login&#x27;;
+    }
+
+    mostrarAyuda(): void {
+        this.dialog.open(AyudaDialogComponent, {
+            width: &#x27;600px&#x27;,
+            maxWidth: &#x27;90vw&#x27;
+        });
+    }
+
+    private dataPiso(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getPisos().subscribe({
+                next: (data: PisoApi[]) &#x3D;&gt; {
+                    this.datosPiso &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataEdificio(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getEdificios().subscribe({
+                next: (data: EdificioApi[]) &#x3D;&gt; {
+                    this.datosEdificio &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataSector(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getSectores().subscribe({
+                next: (data: SectorApi[]) &#x3D;&gt; {
+                    this.datosSector &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataUsuario(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getUsuarios().subscribe({
+                next: (data: UsuarioApi[]) &#x3D;&gt; {
+                    this.datosUsuario &#x3D; data.map((u) &#x3D;&gt; ({
+                        ...u,
+                        rol: u.rol &#x3D;&#x3D;&#x3D; &#x27;administrador&#x27; || u.rol &#x3D;&#x3D;&#x3D; &#x27;operario&#x27; ? u.rol : undefined,
+                    }));
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataActivo(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getActivos().subscribe({
+                next: (data: ActivoApi[]) &#x3D;&gt; {
+                    this.datosActivo &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataUbicacion(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getUbicaciones().subscribe({
+                next: (data: UbicacionApi[]) &#x3D;&gt; {
+                    this.datosUbicacion &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    private dataTareas(): Promise&lt;void&gt; {
+        return new Promise((resolve) &#x3D;&gt; {
+            this.api.getTareas().subscribe({
+                next: (data: TareaApi[]) &#x3D;&gt; {
+                    this.datosTareas &#x3D; data;
+                    resolve();
+                },
+                error: () &#x3D;&gt; resolve()
+            });
+        });
+    }
+
+    validarYGuardar(): void {
+        if (this.ordenForm.invalid) {
+            this.mostrarNotificacion(&#x27;Por favor, complete todos los campos requeridos.&#x27;, &#x27;error&#x27;);
+            Object.keys(this.ordenForm.controls).forEach(key &#x3D;&gt; {
+                this.ordenForm.get(key)?.markAsTouched();
+            });
+            return;
+        }
+        this.guardarEnOT();
+    }
+
+    guardarEnOT(): void {
+        this.isSaving &#x3D; true;
+        const formValue &#x3D; this.ordenForm.value;
+
+        const fechaNormalizada &#x3D; formValue.fecha ? new Date(formValue.fecha).toISOString().split(&#x27;T&#x27;)[0] : this.minFecha;
+
+        const tareasArray: string[] &#x3D; Array.isArray(formValue.tareas)
+            ? (formValue.tareas as string[])
+            : [formValue.tareas as string];
+        const tareasJoin &#x3D; tareasArray.filter((t: string) &#x3D;&gt; !!t &amp;&amp; t.trim().length &gt; 0).join(&#x27;, &#x27;);
+
+        if (tareasJoin.length &gt; 500) {
+            this.mostrarNotificacion(&#x60;Las tareas seleccionadas (${tareasJoin.length} caracteres) exceden el límite de 500. Deseleccione algunas tareas.&#x60;, &#x27;error&#x27;);
+            this.isSaving &#x3D; false;
+            return;
+        }
+
+        const edificioSeleccionado &#x3D; this.datosEdificio.find(e &#x3D;&gt; e.Nombre &#x3D;&#x3D;&#x3D; formValue.edificio);
+        const pisoSeleccionado &#x3D; this.datosPiso.find(p &#x3D;&gt; p.Nombre &#x3D;&#x3D;&#x3D; formValue.piso);
+        const sectorSeleccionado &#x3D; this.datosSector.find(s &#x3D;&gt; s.Sector &#x3D;&#x3D;&#x3D; formValue.sector);
+        const ubicacionSeleccionada &#x3D; this.datosUbicacion.find(u &#x3D;&gt; u.Nombre &#x3D;&#x3D;&#x3D; formValue.ubicacion);
+        const activoSeleccionado &#x3D; this.datosActivo.find(a &#x3D;&gt; a.Nombre &#x3D;&#x3D;&#x3D; formValue.tipoActivo);
+        const usuarioIdSeleccionado &#x3D; Number(formValue.usuario);
+        const usuarioSeleccionado &#x3D; this.datosUsuario.find(u &#x3D;&gt; u.id &#x3D;&#x3D;&#x3D; usuarioIdSeleccionado);
+
+        if (!edificioSeleccionado || !pisoSeleccionado || !sectorSeleccionado ||
+            !ubicacionSeleccionada || !activoSeleccionado || !usuarioSeleccionado) {
+            this.mostrarNotificacion(&#x27;Error al mapear los datos seleccionados&#x27;, &#x27;error&#x27;);
+            this.isSaving &#x3D; false;
+            return;
+        }
+
+        const edificioId &#x3D; edificioSeleccionado.id;
+        const pisoId &#x3D; pisoSeleccionado.id;
+        const sectorId &#x3D; sectorSeleccionado.id;
+        const ubicacionId &#x3D; ubicacionSeleccionada.id;
+        const activoId &#x3D; activoSeleccionado.id;
+        const usuarioId &#x3D; usuarioSeleccionado.id;
+        const tareasIds &#x3D; this.datosTareas
+            .filter(t &#x3D;&gt; tareasArray.includes(t.Descripcion))
+            .map(t &#x3D;&gt; t.id);
+
+        const datosNormalizados: CreateOTPayload &#x3D; {
+            edificioId,
+            pisoId,
+            sectorId,
+            ubicacionId,
+            activoId,
+            usuarioId,
+            tareasIds,
+            fecha: fechaNormalizada,
+            estado: &#x27;Pendiente&#x27;
+        };
+
+        this.api.createOT(datosNormalizados).subscribe({
+            next: async () &#x3D;&gt; {
+                this.isSaving &#x3D; false;
+                this.mostrarNotificacion(&#x27;Orden de trabajo creada exitosamente&#x27;, &#x27;success&#x27;);
+                await this.generatePDF();
+                this.borradoForm();
+            },
+            error: (err) &#x3D;&gt; {
+                this.isSaving &#x3D; false;
+                const backendMsg &#x3D; err?.error?.message || err?.message || &#x27;Error al guardar la orden de trabajo&#x27;;
+                this.mostrarNotificacion(backendMsg, &#x27;error&#x27;);
+            }
+        });
+    }
+
+    borradoForm(): void {
+        this.ordenForm.reset({
+            fecha: this.minFecha
+        });
+        this.pdfUrl &#x3D; &#x27;&#x27;;
+    }
+
+    imprimirPagina(): void {
+        window.print();
+    }
+
+    async generatePDF(): Promise&lt;void&gt; {
+        if (this.ordenForm.invalid) {
+            this.mostrarNotificacion(&#x27;Complete todos los campos antes de generar el PDF.&#x27;, &#x27;error&#x27;);
+            return;
+        }
+
+        const dataUrl &#x3D; await this.pdf.elementToPdf(&#x27;pdf-content&#x27;, &#x27;ordenDeTrabajo.pdf&#x27;);
+        if (dataUrl) {
+            this.pdfUrl &#x3D; dataUrl;
+            this.mostrarNotificacion(&#x27;PDF generado correctamente.&#x27;, &#x27;success&#x27;);
+        } else {
+            this.mostrarNotificacion(&#x27;Error al generar el PDF.&#x27;, &#x27;error&#x27;);
+        }
+    }
+
+    get edificioControl() { return this.ordenForm.get(&#x27;edificio&#x27;); }
+    get pisoControl() { return this.ordenForm.get(&#x27;piso&#x27;); }
+    get sectorControl() { return this.ordenForm.get(&#x27;sector&#x27;); }
+    get ubicacionControl() { return this.ordenForm.get(&#x27;ubicacion&#x27;); }
+    get tipoActivoControl() { return this.ordenForm.get(&#x27;tipoActivo&#x27;); }
+    get usuarioControl() { return this.ordenForm.get(&#x27;usuario&#x27;); }
+    get tareasControl() { return this.ordenForm.get(&#x27;tareas&#x27;); }
+    get fechaControl() { return this.ordenForm.get(&#x27;fecha&#x27;); }
+
+    get operariosDisponibles(): UsuarioApi[] {
+        return this.datosUsuario.filter((usuario) &#x3D;&gt; usuario.rol &#x3D;&#x3D;&#x3D; &#x27;operario&#x27;);
+    }
+
+    get nombreOperarioSeleccionado(): string {
+        const usuarioIdSeleccionado &#x3D; Number(this.ordenForm.value.usuario);
+        const usuarioSeleccionado &#x3D; this.datosUsuario.find((usuario) &#x3D;&gt; usuario.id &#x3D;&#x3D;&#x3D; usuarioIdSeleccionado);
+        return usuarioSeleccionado?.nombre || &#x27;&#x27;;
+    }
+}
+
+
+@Component({
+    selector: &#x27;app-ayuda-dialog&#x27;,
+    template: &#x60;
+    &lt;h2 mat-dialog-title&gt;
+      &lt;mat-icon style&#x3D;&quot;vertical-align: middle; margin-right: 8px;&quot;&gt;help_outline&lt;/mat-icon&gt;
+      Ayuda - Orden de Trabajo
+    &lt;/h2&gt;
+    &lt;mat-dialog-content&gt;
+      &lt;div class&#x3D;&quot;ayuda-content&quot;&gt;
+        &lt;h3&gt;&lt;mat-icon&gt;info&lt;/mat-icon&gt; ¿Cómo funciona?&lt;/h3&gt;
+        &lt;p&gt;Esta sección permite crear nuevas órdenes de trabajo para el mantenimiento de activos en la universidad.&lt;/p&gt;
+        
+        &lt;h3&gt;&lt;mat-icon&gt;checklist&lt;/mat-icon&gt; Pasos para crear una orden:&lt;/h3&gt;
+        &lt;ol&gt;
+          &lt;li&gt;&lt;strong&gt;Seleccione la ubicación:&lt;/strong&gt; Edificio, Piso, Sector y Ubicación específica&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Elija el activo:&lt;/strong&gt; Tipo de activo que requiere mantenimiento&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Asigne un operario:&lt;/strong&gt; Personal encargado de realizar las tareas&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Seleccione las tareas:&lt;/strong&gt; Puede elegir múltiples tareas de mantenimiento&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Defina la fecha:&lt;/strong&gt; Fecha programada para la ejecución&lt;/li&gt;
+        &lt;/ol&gt;
+
+        &lt;h3&gt;&lt;mat-icon&gt;tips_and_updates&lt;/mat-icon&gt; Funcionalidades:&lt;/h3&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Crear Orden:&lt;/strong&gt; Guarda la orden en el sistema&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Generar PDF:&lt;/strong&gt; Crea un documento descargable con la información&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Limpiar Formulario:&lt;/strong&gt; Reinicia todos los campos&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class&#x3D;&quot;ayuda-nota&quot;&gt;
+          &lt;mat-icon&gt;warning&lt;/mat-icon&gt;
+          &lt;p&gt;&lt;strong&gt;Nota:&lt;/strong&gt; Todos los campos son obligatorios. El sistema validará que la información esté completa antes de crear la orden.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/mat-dialog-content&gt;
+    &lt;mat-dialog-actions align&#x3D;&quot;end&quot;&gt;
+      &lt;button mat-raised-button color&#x3D;&quot;primary&quot; mat-dialog-close&gt;
+        &lt;mat-icon&gt;check&lt;/mat-icon&gt;
+        Entendido
+      &lt;/button&gt;
+    &lt;/mat-dialog-actions&gt;
+  &#x60;,
+    styles: [&#x60;
+    .ayuda-content {
+      padding: 16px 0;
+    }
+    
+    .ayuda-content h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #667eea;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .ayuda-content p {
+      margin: 8px 0;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .ayuda-content ol, .ayuda-content ul {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .ayuda-content li {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .ayuda-content strong {
+      color: #1f6cb0;
+    }
+
+    .ayuda-nota {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 4px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .ayuda-nota mat-icon {
+      color: #ff9800;
+      margin-top: 2px;
+    }
+
+    .ayuda-nota p {
+      margin: 0;
+      flex: 1;
+    }
+
+    ::ng-deep .mat-mdc-dialog-title {
+      display: flex;
+      align-items: center;
+      color: #667eea;
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+
+    ::ng-deep .mat-mdc-dialog-actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  &#x60;]
+})
+export class AyudaDialogComponent { }
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ot-container&quot;&gt;
+  &lt;div class&#x3D;&quot;spinner-overlay&quot; *ngIf&#x3D;&quot;isLoading || isSaving&quot;&gt;
+    &lt;mat-spinner diameter&#x3D;&quot;60&quot;&gt;&lt;/mat-spinner&gt;
+    &lt;p class&#x3D;&quot;loading-text&quot;&gt;{{ isLoading ? &#x27;Cargando datos...&#x27; : &#x27;Guardando orden...&#x27; }}&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;mat-sidenav-container class&#x3D;&quot;sidenav-container&quot;&gt;
+    &lt;mat-sidenav mode&#x3D;&quot;side&quot; opened class&#x3D;&quot;sidebar&quot;&gt;
+      &lt;div class&#x3D;&quot;sidebar-content&quot;&gt;
+        &lt;div class&#x3D;&quot;sidebar-header&quot;&gt;
+          &lt;img src&#x3D;&quot;assets/UTNLOGO.png&quot; alt&#x3D;&quot;Logo UTN&quot; class&#x3D;&quot;logo&quot;&gt;
+        &lt;/div&gt;
+        &lt;mat-nav-list class&#x3D;&quot;nav-list&quot;&gt;
+          &lt;a mat-list-item routerLink&#x3D;&quot;/ot&quot; routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+            &lt;mat-icon&gt;assignment&lt;/mat-icon&gt;
+            &lt;span&gt;Orden de Trabajo&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a mat-list-item routerLink&#x3D;&quot;/historial&quot; routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+            &lt;mat-icon&gt;history&lt;/mat-icon&gt;
+            &lt;span&gt;Historial&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a mat-list-item routerLink&#x3D;&quot;/gestion&quot; routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+            &lt;mat-icon&gt;settings&lt;/mat-icon&gt;
+            &lt;span&gt;Gestión&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a mat-list-item (click)&#x3D;&quot;logout()&quot; class&#x3D;&quot;logout-btn&quot;&gt;
+            &lt;mat-icon&gt;logout&lt;/mat-icon&gt;
+            &lt;span&gt;Cerrar Sesión&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/mat-nav-list&gt;
+
+        &lt;div class&#x3D;&quot;ot-info-card&quot;&gt;
+          &lt;div class&#x3D;&quot;ot-info-header&quot;&gt;
+            &lt;mat-icon&gt;admin_panel_settings&lt;/mat-icon&gt;
+            &lt;h3&gt;Vista Admin&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;p&gt;Puede crear órdenes de trabajo, asignar operarios, generar PDF y acceder a gestión e historial con edición
+            completa.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/mat-sidenav&gt;
+
+    &lt;mat-sidenav-content&gt;
+      &lt;mat-toolbar color&#x3D;&quot;primary&quot; class&#x3D;&quot;toolbar&quot;&gt;
+        &lt;mat-icon class&#x3D;&quot;toolbar-icon&quot;&gt;assignment&lt;/mat-icon&gt;
+        &lt;span class&#x3D;&quot;toolbar-title&quot;&gt;Nueva Orden de Trabajo&lt;/span&gt;
+        &lt;span class&#x3D;&quot;spacer&quot;&gt;&lt;/span&gt;
+        &lt;button mat-icon-button matTooltip&#x3D;&quot;Ayuda&quot; (click)&#x3D;&quot;mostrarAyuda()&quot;&gt;
+          &lt;mat-icon&gt;help_outline&lt;/mat-icon&gt;
+        &lt;/button&gt;
+      &lt;/mat-toolbar&gt;
+
+      &lt;div class&#x3D;&quot;content-wrapper&quot;&gt;
+        &lt;mat-card class&#x3D;&quot;form-card fade-in&quot;&gt;
+          &lt;mat-card-header&gt;
+            &lt;mat-card-title&gt;
+              &lt;mat-icon&gt;description&lt;/mat-icon&gt;
+              Información de la Orden
+            &lt;/mat-card-title&gt;
+            &lt;mat-card-subtitle&gt;Complete todos los campos para crear una orden de trabajo&lt;/mat-card-subtitle&gt;
+          &lt;/mat-card-header&gt;
+
+          &lt;mat-card-content&gt;
+            &lt;form [formGroup]&#x3D;&quot;ordenForm&quot; (ngSubmit)&#x3D;&quot;validarYGuardar()&quot;&gt;
+              &lt;div class&#x3D;&quot;form-grid&quot;&gt;
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                  &lt;mat-label&gt;Edificio&lt;/mat-label&gt;
+                  &lt;mat-select formControlName&#x3D;&quot;edificio&quot;&gt;
+                    &lt;mat-option *ngFor&#x3D;&quot;let edificio of datosEdificio&quot; [value]&#x3D;&quot;edificio.Nombre&quot;&gt;
+                      {{ edificio.Nombre }}
+                    &lt;/mat-option&gt;
+                  &lt;/mat-select&gt;
+                  &lt;mat-icon matPrefix&gt;business&lt;/mat-icon&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;edificioControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione un edificio
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                  &lt;mat-label&gt;Piso&lt;/mat-label&gt;
+                  &lt;mat-select formControlName&#x3D;&quot;piso&quot;&gt;
+                    &lt;mat-option *ngFor&#x3D;&quot;let piso of datosPiso&quot; [value]&#x3D;&quot;piso.Nombre&quot;&gt;
+                      {{ piso.Nombre }}
+                    &lt;/mat-option&gt;
+                  &lt;/mat-select&gt;
+                  &lt;mat-icon matPrefix&gt;layers&lt;/mat-icon&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;pisoControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione un piso
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                  &lt;mat-label&gt;Sector&lt;/mat-label&gt;
+                  &lt;mat-select formControlName&#x3D;&quot;sector&quot;&gt;
+                    &lt;mat-option *ngFor&#x3D;&quot;let sector of datosSector&quot; [value]&#x3D;&quot;sector.Sector&quot;&gt;
+                      {{ sector.Sector }}
+                    &lt;/mat-option&gt;
+                  &lt;/mat-select&gt;
+                  &lt;mat-icon matPrefix&gt;location_on&lt;/mat-icon&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;sectorControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione un sector
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                  &lt;mat-label&gt;Ubicación&lt;/mat-label&gt;
+                  &lt;mat-select formControlName&#x3D;&quot;ubicacion&quot;&gt;
+                    &lt;mat-option *ngFor&#x3D;&quot;let ubicacion of datosUbicacion&quot; [value]&#x3D;&quot;ubicacion.Nombre&quot;&gt;
+                      {{ ubicacion.Nombre }}
+                    &lt;/mat-option&gt;
+                  &lt;/mat-select&gt;
+                  &lt;mat-icon matPrefix&gt;room&lt;/mat-icon&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;ubicacionControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione una ubicación
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                  &lt;mat-label&gt;Tipo de Activo&lt;/mat-label&gt;
+                  &lt;mat-select formControlName&#x3D;&quot;tipoActivo&quot;&gt;
+                    &lt;mat-option *ngFor&#x3D;&quot;let activo of datosActivo&quot; [value]&#x3D;&quot;activo.Nombre&quot;&gt;
+                      {{ activo.Nombre }}
+                    &lt;/mat-option&gt;
+                  &lt;/mat-select&gt;
+                  &lt;mat-icon matPrefix&gt;category&lt;/mat-icon&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;tipoActivoControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione un tipo de activo
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                  &lt;mat-label&gt;Operario Asignado&lt;/mat-label&gt;
+                  &lt;mat-select formControlName&#x3D;&quot;usuario&quot;&gt;
+                    &lt;mat-option *ngFor&#x3D;&quot;let usuario of operariosDisponibles&quot; [value]&#x3D;&quot;usuario.id&quot;&gt;
+                      {{ usuario.nombre }}
+                    &lt;/mat-option&gt;
+                  &lt;/mat-select&gt;
+                  &lt;mat-icon matPrefix&gt;person&lt;/mat-icon&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;usuarioControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione un operario
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;full-width&quot;&gt;
+                  &lt;mat-label&gt;Tareas a Realizar&lt;/mat-label&gt;
+                  &lt;mat-select formControlName&#x3D;&quot;tareas&quot; multiple&gt;
+                    &lt;mat-option *ngFor&#x3D;&quot;let tarea of datosTareas&quot; [value]&#x3D;&quot;tarea.Descripcion&quot;&gt;
+                      {{ tarea.Descripcion }}
+                    &lt;/mat-option&gt;
+                  &lt;/mat-select&gt;
+                  &lt;mat-icon matPrefix&gt;checklist&lt;/mat-icon&gt;
+                  &lt;mat-hint&gt;Puede seleccionar múltiples tareas&lt;/mat-hint&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;tareasControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione al menos una tarea
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+
+                &lt;mat-form-field appearance&#x3D;&quot;outline&quot;&gt;
+                  &lt;mat-label&gt;Fecha de Ejecución&lt;/mat-label&gt;
+                  &lt;input matInput [matDatepicker]&#x3D;&quot;picker&quot; formControlName&#x3D;&quot;fecha&quot; [min]&#x3D;&quot;minFecha&quot;&gt;
+                  &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;picker&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+                  &lt;mat-datepicker #picker&gt;&lt;/mat-datepicker&gt;
+                  &lt;mat-icon matPrefix&gt;event&lt;/mat-icon&gt;
+                  &lt;mat-error *ngIf&#x3D;&quot;fechaControl?.hasError(&#x27;required&#x27;)&quot;&gt;
+                    Seleccione una fecha
+                  &lt;/mat-error&gt;
+                &lt;/mat-form-field&gt;
+              &lt;/div&gt;
+
+              &lt;mat-card-actions class&#x3D;&quot;action-buttons&quot;&gt;
+                &lt;button mat-raised-button color&#x3D;&quot;primary&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;ordenForm.invalid || isSaving&quot;&gt;
+                  &lt;mat-icon&gt;picture_as_pdf&lt;/mat-icon&gt;
+                  Crear orden y generar PDF
+                &lt;/button&gt;
+                &lt;button mat-stroked-button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;borradoForm()&quot;&gt;
+                  &lt;mat-icon&gt;refresh&lt;/mat-icon&gt;
+                  Limpiar Formulario
+                &lt;/button&gt;
+              &lt;/mat-card-actions&gt;
+            &lt;/form&gt;
+          &lt;/mat-card-content&gt;
+        &lt;/mat-card&gt;
+
+        &lt;div id&#x3D;&quot;pdf-content&quot; class&#x3D;&quot;pdf-preview-hidden&quot;&gt;
+          &lt;div class&#x3D;&quot;pdf-header&quot;&gt;
+            &lt;img src&#x3D;&quot;https://frsc.cvg.utn.edu.ar/theme/image.php/snap/theme/1741635814/img/logo&quot; alt&#x3D;&quot;UTN&quot;
+              class&#x3D;&quot;pdf-logo&quot;&gt;
+            &lt;h2&gt;Orden de Trabajo&lt;/h2&gt;
+            &lt;p class&#x3D;&quot;pdf-date&quot;&gt;Fecha de emisión: {{ ordenForm.value.fecha | date:&#x27;dd/MM/yyyy&#x27; }}&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;pdf-content&quot;&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Edificio:&lt;/strong&gt;
+              &lt;span&gt;{{ ordenForm.value.edificio }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Piso:&lt;/strong&gt;
+              &lt;span&gt;{{ ordenForm.value.piso }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Sector:&lt;/strong&gt;
+              &lt;span&gt;{{ ordenForm.value.sector }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Ubicación:&lt;/strong&gt;
+              &lt;span&gt;{{ ordenForm.value.ubicacion }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Tipo de Activo:&lt;/strong&gt;
+              &lt;span&gt;{{ ordenForm.value.tipoActivo }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Operario:&lt;/strong&gt;
+              &lt;span&gt;{{ nombreOperarioSeleccionado }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Tareas:&lt;/strong&gt;
+              &lt;span&gt;{{ ordenForm.value.tareas?.join(&#x27;, &#x27;) }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;pdf-row&quot;&gt;
+              &lt;strong&gt;Fecha de Ejecución:&lt;/strong&gt;
+              &lt;span&gt;{{ ordenForm.value.fecha | date:&#x27;dd/MM/yyyy&#x27; }}&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/mat-sidenav-content&gt;
+  &lt;/mat-sidenav-container&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;notification&quot; *ngIf&#x3D;&quot;showNotification&quot; [ngClass]&#x3D;&quot;{
+       &#x27;success&#x27;: notificationType &#x3D;&#x3D;&#x3D; &#x27;success&#x27;,
+       &#x27;error&#x27;: notificationType &#x3D;&#x3D;&#x3D; &#x27;error&#x27;,
+       &#x27;info&#x27;: notificationType &#x3D;&#x3D;&#x3D; &#x27;info&#x27;
+     }&quot;&gt;
+  &lt;mat-icon&gt;{{ notificationType &#x3D;&#x3D;&#x3D; &#x27;success&#x27; ? &#x27;check_circle&#x27; : notificationType &#x3D;&#x3D;&#x3D; &#x27;error&#x27; ? &#x27;error&#x27; : &#x27;info&#x27;
+    }}&lt;/mat-icon&gt;
+  {{ notificationMessage }}
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="ot-container">  <div class="spinner-overlay" *ngIf="isLoading || isSaving">    <mat-spinner diameter="60"></mat-spinner>    <p class="loading-text">{{ isLoading ? \'Cargando datos...\' : \'Guardando orden...\' }}</p>  </div>  <mat-sidenav-container class="sidenav-container">    <mat-sidenav mode="side" opened class="sidebar">      <div class="sidebar-content">        <div class="sidebar-header">          <img src="assets/UTNLOGO.png" alt="Logo UTN" class="logo">        </div>        <mat-nav-list class="nav-list">          <a mat-list-item routerLink="/ot" routerLinkActive="active-link">            <mat-icon>assignment</mat-icon>            <span>Orden de Trabajo</span>          </a>          <a mat-list-item routerLink="/historial" routerLinkActive="active-link">            <mat-icon>history</mat-icon>            <span>Historial</span>          </a>          <a mat-list-item routerLink="/gestion" routerLinkActive="active-link">            <mat-icon>settings</mat-icon>            <span>Gestión</span>          </a>          <a mat-list-item (click)="logout()" class="logout-btn">            <mat-icon>logout</mat-icon>            <span>Cerrar Sesión</span>          </a>        </mat-nav-list>        <div class="ot-info-card">          <div class="ot-info-header">            <mat-icon>admin_panel_settings</mat-icon>            <h3>Vista Admin</h3>          </div>          <p>Puede crear órdenes de trabajo, asignar operarios, generar PDF y acceder a gestión e historial con edición            completa.</p>        </div>      </div>    </mat-sidenav>    <mat-sidenav-content>      <mat-toolbar color="primary" class="toolbar">        <mat-icon class="toolbar-icon">assignment</mat-icon>        <span class="toolbar-title">Nueva Orden de Trabajo</span>        <span class="spacer"></span>        <button mat-icon-button matTooltip="Ayuda" (click)="mostrarAyuda()">          <mat-icon>help_outline</mat-icon>        </button>      </mat-toolbar>      <div class="content-wrapper">        <mat-card class="form-card fade-in">          <mat-card-header>            <mat-card-title>              <mat-icon>description</mat-icon>              Información de la Orden            </mat-card-title>            <mat-card-subtitle>Complete todos los campos para crear una orden de trabajo</mat-card-subtitle>          </mat-card-header>          <mat-card-content>            <form [formGroup]="ordenForm" (ngSubmit)="validarYGuardar()">              <div class="form-grid">                <mat-form-field appearance="outline">                  <mat-label>Edificio</mat-label>                  <mat-select formControlName="edificio">                    <mat-option *ngFor="let edificio of datosEdificio" [value]="edificio.Nombre">                      {{ edificio.Nombre }}                    </mat-option>                  </mat-select>                  <mat-icon matPrefix>business</mat-icon>                  <mat-error *ngIf="edificioControl?.hasError(\'required\')">                    Seleccione un edificio                  </mat-error>                </mat-form-field>                <mat-form-field appearance="outline">                  <mat-label>Piso</mat-label>                  <mat-select formControlName="piso">                    <mat-option *ngFor="let piso of datosPiso" [value]="piso.Nombre">                      {{ piso.Nombre }}                    </mat-option>                  </mat-select>                  <mat-icon matPrefix>layers</mat-icon>                  <mat-error *ngIf="pisoControl?.hasError(\'required\')">                    Seleccione un piso                  </mat-error>                </mat-form-field>                <mat-form-field appearance="outline">                  <mat-label>Sector</mat-label>                  <mat-select formControlName="sector">                    <mat-option *ngFor="let sector of datosSector" [value]="sector.Sector">                      {{ sector.Sector }}                    </mat-option>                  </mat-select>                  <mat-icon matPrefix>location_on</mat-icon>                  <mat-error *ngIf="sectorControl?.hasError(\'required\')">                    Seleccione un sector                  </mat-error>                </mat-form-field>                <mat-form-field appearance="outline">                  <mat-label>Ubicación</mat-label>                  <mat-select formControlName="ubicacion">                    <mat-option *ngFor="let ubicacion of datosUbicacion" [value]="ubicacion.Nombre">                      {{ ubicacion.Nombre }}                    </mat-option>                  </mat-select>                  <mat-icon matPrefix>room</mat-icon>                  <mat-error *ngIf="ubicacionControl?.hasError(\'required\')">                    Seleccione una ubicación                  </mat-error>                </mat-form-field>                <mat-form-field appearance="outline">                  <mat-label>Tipo de Activo</mat-label>                  <mat-select formControlName="tipoActivo">                    <mat-option *ngFor="let activo of datosActivo" [value]="activo.Nombre">                      {{ activo.Nombre }}                    </mat-option>                  </mat-select>                  <mat-icon matPrefix>category</mat-icon>                  <mat-error *ngIf="tipoActivoControl?.hasError(\'required\')">                    Seleccione un tipo de activo                  </mat-error>                </mat-form-field>                <mat-form-field appearance="outline">                  <mat-label>Operario Asignado</mat-label>                  <mat-select formControlName="usuario">                    <mat-option *ngFor="let usuario of operariosDisponibles" [value]="usuario.id">                      {{ usuario.nombre }}                    </mat-option>                  </mat-select>                  <mat-icon matPrefix>person</mat-icon>                  <mat-error *ngIf="usuarioControl?.hasError(\'required\')">                    Seleccione un operario                  </mat-error>                </mat-form-field>                <mat-form-field appearance="outline" class="full-width">                  <mat-label>Tareas a Realizar</mat-label>                  <mat-select formControlName="tareas" multiple>                    <mat-option *ngFor="let tarea of datosTareas" [value]="tarea.Descripcion">                      {{ tarea.Descripcion }}                    </mat-option>                  </mat-select>                  <mat-icon matPrefix>checklist</mat-icon>                  <mat-hint>Puede seleccionar múltiples tareas</mat-hint>                  <mat-error *ngIf="tareasControl?.hasError(\'required\')">                    Seleccione al menos una tarea                  </mat-error>                </mat-form-field>                <mat-form-field appearance="outline">                  <mat-label>Fecha de Ejecución</mat-label>                  <input matInput [matDatepicker]="picker" formControlName="fecha" [min]="minFecha">                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>                  <mat-datepicker #picker></mat-datepicker>                  <mat-icon matPrefix>event</mat-icon>                  <mat-error *ngIf="fechaControl?.hasError(\'required\')">                    Seleccione una fecha                  </mat-error>                </mat-form-field>              </div>              <mat-card-actions class="action-buttons">                <button mat-raised-button color="primary" type="submit" [disabled]="ordenForm.invalid || isSaving">                  <mat-icon>picture_as_pdf</mat-icon>                  Crear orden y generar PDF                </button>                <button mat-stroked-button type="button" (click)="borradoForm()">                  <mat-icon>refresh</mat-icon>                  Limpiar Formulario                </button>              </mat-card-actions>            </form>          </mat-card-content>        </mat-card>        <div id="pdf-content" class="pdf-preview-hidden">          <div class="pdf-header">            <img src="https://frsc.cvg.utn.edu.ar/theme/image.php/snap/theme/1741635814/img/logo" alt="UTN"              class="pdf-logo">            <h2>Orden de Trabajo</h2>            <p class="pdf-date">Fecha de emisión: {{ ordenForm.value.fecha | date:\'dd/MM/yyyy\' }}</p>          </div>          <div class="pdf-content">            <div class="pdf-row">              <strong>Edificio:</strong>              <span>{{ ordenForm.value.edificio }}</span>            </div>            <div class="pdf-row">              <strong>Piso:</strong>              <span>{{ ordenForm.value.piso }}</span>            </div>            <div class="pdf-row">              <strong>Sector:</strong>              <span>{{ ordenForm.value.sector }}</span>            </div>            <div class="pdf-row">              <strong>Ubicación:</strong>              <span>{{ ordenForm.value.ubicacion }}</span>            </div>            <div class="pdf-row">              <strong>Tipo de Activo:</strong>              <span>{{ ordenForm.value.tipoActivo }}</span>            </div>            <div class="pdf-row">              <strong>Operario:</strong>              <span>{{ nombreOperarioSeleccionado }}</span>            </div>            <div class="pdf-row">              <strong>Tareas:</strong>              <span>{{ ordenForm.value.tareas?.join(\', \') }}</span>            </div>            <div class="pdf-row">              <strong>Fecha de Ejecución:</strong>              <span>{{ ordenForm.value.fecha | date:\'dd/MM/yyyy\' }}</span>            </div>          </div>        </div>      </div>    </mat-sidenav-content>  </mat-sidenav-container></div><div class="notification" *ngIf="showNotification" [ngClass]="{       \'success\': notificationType === \'success\',       \'error\': notificationType === \'error\',       \'info\': notificationType === \'info\'     }">  <mat-icon>{{ notificationType === \'success\' ? \'check_circle\' : notificationType === \'error\' ? \'error\' : \'info\'    }}</mat-icon>  {{ notificationMessage }}</div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AyudaDialogComponent', 'selector': 'app-ayuda-dialog'},{'name': 'GestionComponent', 'selector': 'app-gestion'},{'name': 'HistorialComponent', 'selector': 'app-historial'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'OrdenTrabajoComponent', 'selector': 'app-orden-trabajo'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'OrdenTrabajoComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'OrdenTrabajoComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

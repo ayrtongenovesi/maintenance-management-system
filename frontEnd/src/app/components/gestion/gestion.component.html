@@ -1,0 +1,173 @@
+<mat-sidenav-container class="main-container">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-content">
+      <div class="sidebar-header">
+        <img src="assets/UTNLOGO.png" alt="Logo UTN" class="logo">
+      </div>
+
+      <mat-nav-list class="nav-list">
+        <a mat-list-item routerLink="/ot" routerLinkActive="active-link">
+          <mat-icon>assignment</mat-icon>
+          <span>Orden de Trabajo</span>
+        </a>
+        <a mat-list-item routerLink="/historial" routerLinkActive="active-link">
+          <mat-icon>history</mat-icon>
+          <span>Historial</span>
+        </a>
+        <a mat-list-item routerLink="/gestion" routerLinkActive="active-link">
+          <mat-icon>settings</mat-icon>
+          <span>Gestión</span>
+        </a>
+        <a mat-list-item (click)="logout()" routerLink="/login">
+          <mat-icon color="warn">logout</mat-icon>
+          <span>Cerrar Sesión</span>
+        </a>
+      </mat-nav-list>
+
+      <div class="stats-section">
+        <div class="stat-card">
+          <mat-icon>folder</mat-icon>
+          <div class="stat-info">
+            <span class="stat-label">Secciones</span>
+            <span class="stat-value">{{ sections.length }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-content">
+    <mat-toolbar color="primary" class="toolbar">
+      <mat-icon class="toolbar-icon">admin_panel_settings</mat-icon>
+      <span class="toolbar-title">Gestión de Activos</span>
+      <span class="spacer"></span>
+      <mat-chip class="info-chip">Sistema de Administración</mat-chip>
+    </mat-toolbar>
+
+    <div *ngIf="isLoading" class="spinner-overlay">
+      <mat-spinner diameter="60"></mat-spinner>
+      <p>Cargando datos...</p>
+    </div>
+
+    <div class="content-wrapper" *ngIf="!isLoading">
+      <mat-accordion class="sections-accordion">
+        <mat-expansion-panel *ngFor="let section of sections" class="section-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="panel-title">
+              <mat-icon class="panel-icon">{{ getSectionIcon(section.name) }}</mat-icon>
+              {{ section.name }}
+            </mat-panel-title>
+            <mat-panel-description class="panel-description">
+              {{ section.data.length }} registro(s)
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="panel-content">
+            <mat-card class="table-card">
+              <div class="table-container">
+                <table class="modern-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th *ngIf="section.key === 'usuario'">Rol</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="add-row" *ngIf="section.key !== 'usuario'">
+                      <td class="id-cell">
+                        <mat-icon class="new-icon">fiber_new</mat-icon>
+                      </td>
+                      <td>
+                        <mat-form-field appearance="outline" class="inline-edit">
+                          <input matInput #newNombre type="text" placeholder="Nombre del nuevo registro"
+                            (keyup.enter)="add({Nombre:newNombre.value}, section.key); newNombre.value=''">
+                        </mat-form-field>
+                      </td>
+                      <td class="actions-cell">
+                        <button mat-icon-button color="primary"
+                          (click)="add({Nombre:newNombre.value}, section.key); newNombre.value=''"
+                          matTooltip="Agregar" class="action-btn add-action-btn">
+                          <mat-icon>add_circle</mat-icon>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngFor="let item of section.data" class="table-row">
+                      <td class="id-cell">{{ item.id }}</td>
+                      <td>
+                        <mat-form-field appearance="outline" class="inline-edit">
+                          <input matInput [(ngModel)]="item.Nombre">
+                        </mat-form-field>
+                      </td>
+                      <td *ngIf="section.key === 'usuario'">
+                        <mat-form-field appearance="outline" class="inline-edit">
+                          <mat-select [(ngModel)]="item.Rol" [disabled]="item.Mail === 'admin@gmail.com'">
+                            <mat-option value="operario"
+                              [disabled]="item.Mail === 'admin@gmail.com'">Operario</mat-option>
+                            <mat-option value="administrador">Administrador</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </td>
+                      <td class="actions-cell">
+                        <button mat-icon-button color="accent" (click)="update(item, section.key)"
+                          matTooltip="Guardar cambios" class="action-btn">
+                          <mat-icon>save</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="remove(item.id, section.key)"
+                          matTooltip="Eliminar" class="action-btn"
+                          *ngIf="section.key !== 'usuario' || item.Mail !== 'admin@gmail.com'">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="section.data.length === 0">
+                      <td [attr.colspan]="section.key === 'usuario' ? 4 : 3" class="no-data">
+                        <mat-icon>inbox</mat-icon>
+                        <p>No hay registros en esta sección</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </mat-card>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div *ngIf="showUserDeleteDialog" class="dialog-overlay" (click)="cancelUserDelete()">
+  <mat-card class="delete-dialog" (click)="$event.stopPropagation()">
+    <mat-card-header class="dialog-header">
+      <div class="dialog-icon-wrap">
+        <mat-icon class="dialog-icon">warning</mat-icon>
+      </div>
+      <div class="dialog-title-group">
+        <mat-card-title>Confirmar eliminacion</mat-card-title>
+        <mat-card-subtitle>{{ pendingDeleteMessage }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="warning-text">Esta accion no se puede deshacer.</p>
+    </mat-card-content>
+    <mat-card-actions class="dialog-actions">
+      <button mat-button (click)="cancelUserDelete()">Cancelar</button>
+      <button mat-raised-button color="warn" (click)="confirmUserDelete()">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="notification" *ngIf="showNotification" [ngClass]="{
+    'success': notificationType === 'success',
+    'error': notificationType === 'error',
+    'info': notificationType === 'info'
+  }">
+  <mat-icon>{{ notificationType === 'success' ? 'check_circle' : notificationType === 'error' ? 'error' : 'info'
+    }}</mat-icon>
+  {{ notificationMessage }}
+</div>

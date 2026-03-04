@@ -1,0 +1,120 @@
+<div class="login-container">
+  <div class="spinner-overlay" *ngIf="isLoading">
+    <mat-spinner diameter="60"></mat-spinner>
+  </div>
+
+  <mat-card class="login-card fade-in">
+    <div class="header-section">
+      <img class="logo" src="https://caimasegall.com.ar/wp-content/uploads/2020/08/logo-UTN-1.png" alt="Logo UTN">
+      <h1 class="app-title">Sistema de Gestión de Mantenimiento</h1>
+      <p class="app-subtitle">UTN FRVT</p>
+    </div>
+
+    <div class="mode-toggle">
+      <button mat-button [class.active]="isLoginMode" (click)="!isLoginMode && toggleMode()">
+        <mat-icon>login</mat-icon>
+        Ingresar
+      </button>
+      <button mat-button [class.active]="!isLoginMode" (click)="isLoginMode && toggleMode()">
+        <mat-icon>person_add</mat-icon>
+        Registrarse
+      </button>
+    </div>
+
+    <form *ngIf="isLoginMode" [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput type="email" formControlName="mail" placeholder="ejemplo@utn.edu.ar" autocomplete="email">
+        <mat-icon matPrefix>email</mat-icon>
+        <mat-error *ngIf="emailControl?.hasError('required')">
+          El correo es requerido
+        </mat-error>
+        <mat-error *ngIf="emailControl?.hasError('email')">
+          Ingrese un correo válido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="contrasena"
+          autocomplete="current-password">
+        <mat-icon matPrefix>lock</mat-icon>
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Ocultar contraseña'">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordControl?.hasError('required')">
+          La contraseña es requerida
+        </mat-error>
+        <mat-error *ngIf="passwordControl?.hasError('minlength')">
+          Mínimo 3 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="submit-btn"
+        [disabled]="loginForm.invalid || isLoading">
+        <mat-icon>login</mat-icon>
+        Iniciar Sesión
+      </button>
+    </form>
+
+    <form *ngIf="!isLoginMode" [formGroup]="registerForm" (ngSubmit)="register()" class="login-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput type="text" formControlName="nombre" placeholder="Juan Pérez" autocomplete="name">
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-error *ngIf="nombreControl?.hasError('required')">
+          El nombre es requerido
+        </mat-error>
+        <mat-error *ngIf="nombreControl?.hasError('minlength')">
+          Mínimo 2 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput type="email" formControlName="mail" placeholder="ejemplo@utn.edu.ar" autocomplete="email">
+        <mat-icon matPrefix>email</mat-icon>
+        <mat-error *ngIf="emailControl?.hasError('required')">
+          El correo es requerido
+        </mat-error>
+        <mat-error *ngIf="emailControl?.hasError('email')">
+          Ingrese un correo válido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="contrasena"
+          autocomplete="new-password">
+        <mat-icon matPrefix>lock</mat-icon>
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Ocultar contraseña'">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordControl?.hasError('required')">
+          La contraseña es requerida
+        </mat-error>
+        <mat-error *ngIf="passwordControl?.hasError('minlength')">
+          Mínimo 3 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="submit-btn"
+        [disabled]="registerForm.invalid || isLoading">
+        <mat-icon>person_add</mat-icon>
+        Registrarse
+      </button>
+    </form>
+  </mat-card>
+</div>
+
+<div class="notification" *ngIf="showNotification" [ngClass]="{
+       'success': notificationType === 'success',
+       'error': notificationType === 'error',
+       'info': notificationType === 'info'
+     }">
+  <mat-icon>{{ notificationType === 'success' ? 'check_circle' : notificationType === 'error' ? 'error' : 'info'
+    }}</mat-icon>
+  {{ notificationMessage }}
+</div>

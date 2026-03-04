@@ -1,0 +1,264 @@
+<mat-sidenav-container class="main-container">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-content">
+      <div class="sidebar-header">
+        <img src="assets/UTNLOGO.png" alt="Logo UTN" class="logo">
+      </div>
+
+      <mat-nav-list class="nav-list">
+        <a mat-list-item routerLink="/ot" routerLinkActive="active-link" *ngIf="isAdmin">
+          <mat-icon>assignment</mat-icon>
+          <span>Orden de Trabajo</span>
+        </a>
+        <a mat-list-item routerLink="/historial" routerLinkActive="active-link">
+          <mat-icon>history</mat-icon>
+          <span>Historial</span>
+        </a>
+        <a mat-list-item routerLink="/gestion" routerLinkActive="active-link" *ngIf="isAdmin">
+          <mat-icon>settings</mat-icon>
+          <span>Gestión</span>
+        </a>
+        <a mat-list-item (click)="logout()" routerLink="/login">
+          <mat-icon color="warn">logout</mat-icon>
+          <span>Cerrar Sesión</span>
+        </a>
+      </mat-nav-list>
+
+      <div class="filters-section" *ngIf="isAdmin">
+        <h3 class="filter-header">Filtros</h3>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Edificio</mat-label>
+          <mat-select [(ngModel)]="selectedEdificio" (selectionChange)="applyFilters()">
+            <mat-option value="">Todos</mat-option>
+            <mat-option *ngFor="let edificio of edificios" [value]="edificio">
+              {{ edificio }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>apartment</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Piso</mat-label>
+          <mat-select [(ngModel)]="selectedPiso" (selectionChange)="applyFilters()">
+            <mat-option value="">Todos</mat-option>
+            <mat-option *ngFor="let piso of pisos" [value]="piso">
+              {{ piso }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>layers</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Ubicación</mat-label>
+          <mat-select [(ngModel)]="selectedUbicacion" (selectionChange)="applyFilters()">
+            <mat-option value="">Todas</mat-option>
+            <mat-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion">
+              {{ ubicacion }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>place</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Sector</mat-label>
+          <mat-select [(ngModel)]="selectedSector" (selectionChange)="applyFilters()">
+            <mat-option value="">Todos</mat-option>
+            <mat-option *ngFor="let sector of sectores" [value]="sector">
+              {{ sector }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>business</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Activo</mat-label>
+          <mat-select [(ngModel)]="selectedActivo" (selectionChange)="applyFilters()">
+            <mat-option value="">Todos</mat-option>
+            <mat-option *ngFor="let activo of activos" [value]="activo">
+              {{ activo }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>build</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Operario</mat-label>
+          <mat-select [(ngModel)]="selectedOperario" (selectionChange)="applyFilters()">
+            <mat-option value="">Todos</mat-option>
+            <mat-option *ngFor="let operario of operarios" [value]="operario">
+              {{ operario }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" class="reset-btn" (click)="reiniciar()">
+          <mat-icon>refresh</mat-icon>
+          Reiniciar Filtros
+        </button>
+      </div>
+
+      <div class="filters-section operario-info" *ngIf="!isAdmin">
+        <div class="operario-info-header">
+          <mat-icon>badge</mat-icon>
+          <h3 class="filter-header">Vista Operario</h3>
+        </div>
+        <p class="operario-info-text">Solo puede ver y marcar sus órdenes asignadas.</p>
+      </div>
+
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-content">
+    <mat-toolbar color="primary" class="toolbar">
+      <mat-icon class="toolbar-icon">list_alt</mat-icon>
+      <span class="toolbar-title">Órdenes de Trabajo - Historial</span>
+      <span class="spacer"></span>
+      <mat-chip class="count-chip">{{ filteredOts.length }} órdenes</mat-chip>
+    </mat-toolbar>
+
+    <div *ngIf="isLoading" class="spinner-overlay">
+      <mat-spinner diameter="60"></mat-spinner>
+      <p>Cargando historial...</p>
+    </div>
+
+    <div class="content-wrapper" *ngIf="!isLoading">
+      <mat-card class="table-card">
+        <div class="table-container">
+          <table class="modern-table">
+            <thead>
+              <tr>
+                <th>Nº</th>
+                <th>Edificio</th>
+                <th>Piso</th>
+                <th>Ubicación</th>
+                <th>Sector</th>
+                <th>Activo</th>
+                <th *ngIf="isAdmin">Operario</th>
+                <th>Estado</th>
+                <th>Tareas</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let ot of filteredOts">
+                <tr class="table-row" [class.row-expanded]="ot.expanded">
+                  <td class="id-cell">{{ ot.id }}</td>
+                  <td>{{ ot.edificio }}</td>
+                  <td>{{ ot.piso }}</td>
+                  <td>{{ ot.ubicacion }}</td>
+                  <td>{{ ot.sector }}</td>
+                  <td>{{ ot.tipoActivo }}</td>
+                  <td *ngIf="isAdmin">{{ ot.usuario }}</td>
+                  <td>
+                    <mat-chip [class.chip-finalizado]="ot.estado === 'Finalizada'"
+                      [class.chip-pendiente]="ot.estado === 'Pendiente'"
+                      [class.chip-proceso]="ot.estado === 'En Proceso'">
+                      {{ ot.estado }}
+                    </mat-chip>
+                  </td>
+                  <td>
+                    <div class="tareas-summary" (click)="toggleExpand(ot)">
+                      <button mat-icon-button class="expand-btn" [class.expanded]="ot.expanded">
+                        <mat-icon>expand_more</mat-icon>
+                      </button>
+                      <div class="tareas-progress">
+                        <span class="tareas-count">{{ getTareasCompletadas(ot) }}/{{ getTareasTotal(ot) }}</span>
+                        <div class="progress-bar-container">
+                          <div class="progress-bar-fill" [style.width.%]="getProgresoTareas(ot)"
+                            [class.progress-complete]="getProgresoTareas(ot) === 100"
+                            [class.progress-partial]="getProgresoTareas(ot) > 0 && getProgresoTareas(ot) < 100">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="actions-cell">
+                    <button mat-icon-button color="primary" (click)="cambiarEstado(ot.id, true)"
+                      matTooltip="Marcar como finalizada" class="action-btn" *ngIf="ot.estado !== 'Finalizada'">
+                      <mat-icon>check_circle</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="cambiarEstado(ot.id, false)" matTooltip="Volver a pendiente"
+                      class="action-btn revert-btn" *ngIf="isAdmin && ot.estado === 'Finalizada'">
+                      <mat-icon>undo</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" *ngIf="isAdmin" (click)="promptdeleteOT(ot.id)"
+                      matTooltip="Eliminar orden" class="action-btn">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Expanded tasks rows -->
+                <tr *ngIf="ot.expanded" class="tareas-detail-row">
+                  <td [attr.colspan]="isAdmin ? 10 : 9">
+                    <div class="tareas-detail-container">
+                      <div class="tareas-detail-header">
+                        <mat-icon>checklist</mat-icon>
+                        <span>Tareas de la Orden #{{ ot.id }}</span>
+                      </div>
+                      <div class="tarea-item" *ngFor="let tarea of ot.tareasDetalle"
+                        [class.tarea-completada]="tarea.completada">
+                        <mat-checkbox [checked]="tarea.completada"
+                          (change)="toggleTarea(ot, tarea.ottId, $event.checked)" color="primary">
+                          {{ tarea.descripcion }}
+                        </mat-checkbox>
+                        <mat-icon class="tarea-status-icon" *ngIf="tarea.completada">check_circle</mat-icon>
+                        <mat-icon class="tarea-status-icon pending"
+                          *ngIf="!tarea.completada">radio_button_unchecked</mat-icon>
+                      </div>
+                      <div *ngIf="!ot.tareasDetalle || ot.tareasDetalle.length === 0" class="no-tareas">
+                        <mat-icon>info</mat-icon>
+                        <span>No hay tareas asignadas</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
+              <tr *ngIf="filteredOts.length === 0">
+                <td [attr.colspan]="isAdmin ? 10 : 9" class="no-data">
+                  <mat-icon>search_off</mat-icon>
+                  <p>No se encontraron órdenes de trabajo</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+
+    <div *ngIf="showDeleteDialog" class="dialog-overlay" (click)="cancelDelete()">
+      <mat-card class="delete-dialog" (click)="$event.stopPropagation()">
+        <mat-card-header class="dialog-header">
+          <div class="dialog-icon-wrap">
+            <mat-icon class="dialog-icon">warning</mat-icon>
+          </div>
+          <div class="dialog-title-group">
+            <mat-card-title>Confirmar eliminacion</mat-card-title>
+            <mat-card-subtitle>Orden de trabajo #{{ deleteId }}</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="warning-text">Esta accion no se puede deshacer.</p>
+        </mat-card-content>
+        <mat-card-actions class="dialog-actions">
+          <button mat-button (click)="cancelDelete()">Cancelar</button>
+          <button mat-raised-button color="warn" (click)="confirmDelete()">
+            <mat-icon>delete</mat-icon>
+            Eliminar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div class="notification" *ngIf="showNotification" [ngClass]="{
+       'success': notificationType === 'success',
+       'error': notificationType === 'error',
+       'info': notificationType === 'info'
+     }">
+  <mat-icon>{{ notificationType === 'success' ? 'check_circle' : notificationType === 'error' ? 'error' : 'info'
+    }}</mat-icon>
+  {{ notificationMessage }}
+</div>

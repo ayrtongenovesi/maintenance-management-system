@@ -1,0 +1,2582 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proyectoutn documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">proyectoutn documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GestionComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/gestion/gestion.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-gestion</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./gestion.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./gestion.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                <a href="#notificationMessage" >notificationMessage</a>
+                            </li>
+                            <li>
+                                <a href="#notificationType" >notificationType</a>
+                            </li>
+                            <li>
+                                <a href="#pendingDeleteId" >pendingDeleteId</a>
+                            </li>
+                            <li>
+                                <a href="#pendingDeleteMessage" >pendingDeleteMessage</a>
+                            </li>
+                            <li>
+                                <a href="#sections" >sections</a>
+                            </li>
+                            <li>
+                                <a href="#showNotification" >showNotification</a>
+                            </li>
+                            <li>
+                                <a href="#showUserDeleteDialog" >showUserDeleteDialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#add" >add</a>
+                            </li>
+                            <li>
+                                <a href="#cancelUserDelete" >cancelUserDelete</a>
+                            </li>
+                            <li>
+                                <a href="#confirmUserDelete" >confirmUserDelete</a>
+                            </li>
+                            <li>
+                                <a href="#getSectionIcon" >getSectionIcon</a>
+                            </li>
+                            <li>
+                                <a href="#handleAddError" >handleAddError</a>
+                            </li>
+                            <li>
+                                <a href="#handleDeleteError" >handleDeleteError</a>
+                            </li>
+                            <li>
+                                <a href="#loadAll" >loadAll</a>
+                            </li>
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                <a href="#showError" >showError</a>
+                            </li>
+                            <li>
+                                <a href="#showSuccess" >showSuccess</a>
+                            </li>
+                            <li>
+                                <a href="#update" >update</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(api: <a href="../injectables/ApiService.html" target="_self">ApiService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/gestion/gestion.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>api</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiService.html" target="_self" >ApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="add"></a>
+                    <span class="name">
+                        <span ><b>add</b></span>
+                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>add(model: literal type, collection: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>model</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>collection</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelUserDelete"></a>
+                    <span class="name">
+                        <span ><b>cancelUserDelete</b></span>
+                        <a href="#cancelUserDelete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelUserDelete()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="297"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:297</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmUserDelete"></a>
+                    <span class="name">
+                        <span ><b>confirmUserDelete</b></span>
+                        <a href="#confirmUserDelete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmUserDelete()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="286"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:286</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSectionIcon"></a>
+                    <span class="name">
+                        <span ><b>getSectionIcon</b></span>
+                        <a href="#getSectionIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSectionIcon(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleAddError"></a>
+                    <span class="name">
+                        <span ><b>handleAddError</b></span>
+                        <a href="#handleAddError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleAddError(err: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="303"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:303</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>err</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDeleteError"></a>
+                    <span class="name">
+                        <span ><b>handleDeleteError</b></span>
+                        <a href="#handleDeleteError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleDeleteError(err: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="311"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:311</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>err</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadAll"></a>
+                    <span class="name">
+                        <span ><b>loadAll</b></span>
+                        <a href="#loadAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadAll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="319"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:319</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                        <span ><b>remove</b></span>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, collection: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:184</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>collection</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showError"></a>
+                    <span class="name">
+                        <span ><b>showError</b></span>
+                        <a href="#showError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showError(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="331"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:331</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showSuccess"></a>
+                    <span class="name">
+                        <span ><b>showSuccess</b></span>
+                        <a href="#showSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showSuccess(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="324"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:324</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>update(item: literal type, collection: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="232"
+                                    class="link-to-prism">src/app/components/gestion/gestion.component.ts:232</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>collection</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/gestion/gestion.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="notificationMessage"></a>
+                    <span class="name">
+                        <span ><b>notificationMessage</b></span>
+                        <a href="#notificationMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/gestion/gestion.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="notificationType"></a>
+                    <span class="name">
+                        <span ><b>notificationType</b></span>
+                        <a href="#notificationType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;success&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/gestion/gestion.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pendingDeleteId"></a>
+                    <span class="name">
+                        <span ><b>pendingDeleteId</b></span>
+                        <a href="#pendingDeleteId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/gestion/gestion.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pendingDeleteMessage"></a>
+                    <span class="name">
+                        <span ><b>pendingDeleteMessage</b></span>
+                        <a href="#pendingDeleteMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/gestion/gestion.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sections"></a>
+                    <span class="name">
+                        <span ><b>sections</b></span>
+                        <a href="#sections"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/gestion/gestion.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showNotification"></a>
+                    <span class="name">
+                        <span ><b>showNotification</b></span>
+                        <a href="#showNotification"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/gestion/gestion.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showUserDeleteDialog"></a>
+                    <span class="name">
+                        <span ><b>showUserDeleteDialog</b></span>
+                        <a href="#showUserDeleteDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/gestion/gestion.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { ApiService } from &#x27;../../services/api.service&#x27;;
+import { UserService } from &#x27;../../services/user.service&#x27;;
+
+@Component({
+    selector: &#x27;app-gestion&#x27;,
+    templateUrl: &#x27;./gestion.component.html&#x27;,
+    styleUrls: [&#x27;./gestion.component.css&#x27;]
+})
+export class GestionComponent implements OnInit {
+
+    sections: { name: string; key: string; data: { id: number; Nombre: string; Mail?: string; Rol?: string }[] }[] &#x3D; [];
+    isLoading &#x3D; true;
+
+    // Notificaciones
+    showNotification &#x3D; false;
+    notificationMessage &#x3D; &#x27;&#x27;;
+    notificationType &#x3D; &#x27;success&#x27;;
+
+    // Dialogo de confirmacion de borrado de usuario
+    showUserDeleteDialog &#x3D; false;
+    pendingDeleteMessage &#x3D; &#x27;&#x27;;
+    pendingDeleteId &#x3D; 0;
+
+    constructor(
+        private api: ApiService,
+        private userService: UserService,
+        private router: Router
+    ) { }
+
+    ngOnInit(): void {
+        this.loadAll();
+    }
+
+    loadAll(): void {
+        this.isLoading &#x3D; true;
+
+        let loaded &#x3D; 0;
+        const total &#x3D; 7;
+
+        let edificios: { id: number; Nombre: string }[] &#x3D; [];
+        let pisos: { id: number; Nombre: string }[] &#x3D; [];
+        let sectores: { id: number; Nombre: string }[] &#x3D; [];
+        let ubicaciones: { id: number; Nombre: string }[] &#x3D; [];
+        let activos: { id: number; Nombre: string }[] &#x3D; [];
+        let usuarios: { id: number; Nombre: string; Mail?: string; Rol?: string }[] &#x3D; [];
+        let tareas: { id: number; Nombre: string }[] &#x3D; [];
+
+        const checkDone &#x3D; () &#x3D;&gt; {
+            loaded++;
+            if (loaded &#x3D;&#x3D;&#x3D; total) {
+                this.sections &#x3D; [
+                    { name: &#x27;Edificios&#x27;, key: &#x27;edificio&#x27;, data: edificios },
+                    { name: &#x27;Pisos&#x27;, key: &#x27;piso&#x27;, data: pisos },
+                    { name: &#x27;Sectores&#x27;, key: &#x27;sector&#x27;, data: sectores },
+                    { name: &#x27;Ubicaciones&#x27;, key: &#x27;ubicacion&#x27;, data: ubicaciones },
+                    { name: &#x27;Activos&#x27;, key: &#x27;activo&#x27;, data: activos },
+                    { name: &#x27;Usuarios&#x27;, key: &#x27;usuario&#x27;, data: usuarios },
+                    { name: &#x27;Tareas&#x27;, key: &#x27;tarea&#x27;, data: tareas }
+                ];
+                this.isLoading &#x3D; false;
+            }
+        };
+
+        this.api.getEdificios().subscribe({
+            next: (res) &#x3D;&gt; {
+                edificios &#x3D; res.map(e &#x3D;&gt; ({ id: e.id, Nombre: e.Nombre }));
+                checkDone();
+            },
+            error: () &#x3D;&gt; checkDone()
+        });
+
+        this.api.getPisos().subscribe({
+            next: (res) &#x3D;&gt; {
+                pisos &#x3D; res.map(p &#x3D;&gt; ({ id: p.id, Nombre: p.Nombre }));
+                checkDone();
+            },
+            error: () &#x3D;&gt; checkDone()
+        });
+
+        this.api.getSectores().subscribe({
+            next: (res) &#x3D;&gt; {
+                sectores &#x3D; res.map(s &#x3D;&gt; ({ id: s.id, Nombre: s.Sector }));
+                checkDone();
+            },
+            error: () &#x3D;&gt; checkDone()
+        });
+
+        this.api.getUbicaciones().subscribe({
+            next: (res) &#x3D;&gt; {
+                ubicaciones &#x3D; res.map(u &#x3D;&gt; ({ id: u.id, Nombre: u.Nombre }));
+                checkDone();
+            },
+            error: () &#x3D;&gt; checkDone()
+        });
+
+        this.api.getActivos().subscribe({
+            next: (res) &#x3D;&gt; {
+                activos &#x3D; res.map(a &#x3D;&gt; ({ id: a.id, Nombre: a.Nombre }));
+                checkDone();
+            },
+            error: () &#x3D;&gt; checkDone()
+        });
+
+        this.api.getUsuarios().subscribe({
+            next: (res) &#x3D;&gt; {
+                usuarios &#x3D; res.map(u &#x3D;&gt; ({ id: u.id, Nombre: u.nombre, Mail: u.mail, Rol: u.rol }));
+                checkDone();
+            },
+            error: () &#x3D;&gt; checkDone()
+        });
+
+        this.api.getTareas().subscribe({
+            next: (res) &#x3D;&gt; {
+                tareas &#x3D; res.map(t &#x3D;&gt; ({ id: t.id, Nombre: t.Descripcion }));
+                checkDone();
+            },
+            error: () &#x3D;&gt; checkDone()
+        });
+    }
+
+    getSectionIcon(name: string): string {
+        switch (name) {
+            case &#x27;Edificios&#x27;: return &#x27;apartment&#x27;;
+            case &#x27;Pisos&#x27;: return &#x27;layers&#x27;;
+            case &#x27;Sectores&#x27;: return &#x27;domain&#x27;;
+            case &#x27;Ubicaciones&#x27;: return &#x27;place&#x27;;
+            case &#x27;Activos&#x27;: return &#x27;build&#x27;;
+            case &#x27;Usuarios&#x27;: return &#x27;people&#x27;;
+            case &#x27;Tareas&#x27;: return &#x27;task&#x27;;
+            default: return &#x27;folder&#x27;;
+        }
+    }
+
+    add(model: { id: string; Nombre: string }, collection: string): void {
+        if (!model.id || !model.Nombre) {
+            this.showError(&#x27;Completa todos los campos&#x27;);
+            return;
+        }
+
+        const id &#x3D; Number(model.id);
+
+        switch (collection) {
+            case &#x27;edificio&#x27;:
+                this.api.createEdificio({ id: id, Nombre: model.Nombre, Direccion: &#x27;&#x27; }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Edificio creado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleAddError(err)
+                });
+                break;
+            case &#x27;piso&#x27;:
+                this.api.createPiso({ id: id, Nombre: model.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Piso creado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleAddError(err)
+                });
+                break;
+            case &#x27;sector&#x27;:
+                this.api.createSector({ id: id, Sector: model.Nombre, IdEdificio: 1 }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Sector creado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleAddError(err)
+                });
+                break;
+            case &#x27;ubicacion&#x27;:
+                this.api.createUbicacion({ id: id, Nombre: model.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Ubicacion creada&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleAddError(err)
+                });
+                break;
+            case &#x27;activo&#x27;:
+                this.api.createActivo({ id: id, Nombre: model.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Activo creado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleAddError(err)
+                });
+                break;
+            case &#x27;tarea&#x27;:
+                this.api.createTarea({ id: id, descripcion: model.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Tarea creada&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleAddError(err)
+                });
+                break;
+        }
+    }
+
+    remove(id: number, collection: string): void {
+        if (collection &#x3D;&#x3D;&#x3D; &#x27;usuario&#x27;) {
+            this.pendingDeleteId &#x3D; id;
+            this.pendingDeleteMessage &#x3D; &#x27;Este usuario puede tener ordenes de trabajo asignadas. ¿Desea eliminarlo de todos modos?&#x27;;
+            this.showUserDeleteDialog &#x3D; true;
+            return;
+        }
+
+        switch (collection) {
+            case &#x27;edificio&#x27;:
+                this.api.deleteEdificio(id).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Edificio eliminado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleDeleteError(err)
+                });
+                break;
+            case &#x27;piso&#x27;:
+                this.api.deletePiso(id).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Piso eliminado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleDeleteError(err)
+                });
+                break;
+            case &#x27;sector&#x27;:
+                this.api.deleteSector(id).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Sector eliminado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleDeleteError(err)
+                });
+                break;
+            case &#x27;ubicacion&#x27;:
+                this.api.deleteUbicacion(id).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Ubicacion eliminada&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleDeleteError(err)
+                });
+                break;
+            case &#x27;activo&#x27;:
+                this.api.deleteActivo(id).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Activo eliminado&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleDeleteError(err)
+                });
+                break;
+            case &#x27;tarea&#x27;:
+                this.api.deleteTarea(id).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Tarea eliminada&#x27;); this.loadAll(); },
+                    error: (err) &#x3D;&gt; this.handleDeleteError(err)
+                });
+                break;
+        }
+    }
+
+    update(item: { id: number; Nombre: string; Mail?: string; Rol?: string }, collection: string): void {
+        switch (collection) {
+            case &#x27;edificio&#x27;:
+                this.api.updateEdificio(item.id, { Nombre: item.Nombre, Direccion: &#x27;&#x27; }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Edificio actualizado&#x27;); },
+                    error: () &#x3D;&gt; this.showError(&#x27;Error al actualizar&#x27;)
+                });
+                break;
+            case &#x27;piso&#x27;:
+                this.api.updatePiso(item.id, { Nombre: item.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Piso actualizado&#x27;); },
+                    error: () &#x3D;&gt; this.showError(&#x27;Error al actualizar&#x27;)
+                });
+                break;
+            case &#x27;sector&#x27;:
+                this.api.updateSector(item.id, { Sector: item.Nombre, IdEdificio: 1 }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Sector actualizado&#x27;); },
+                    error: () &#x3D;&gt; this.showError(&#x27;Error al actualizar&#x27;)
+                });
+                break;
+            case &#x27;ubicacion&#x27;:
+                this.api.updateUbicacion(item.id, { Nombre: item.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Ubicacion actualizada&#x27;); },
+                    error: () &#x3D;&gt; this.showError(&#x27;Error al actualizar&#x27;)
+                });
+                break;
+            case &#x27;activo&#x27;:
+                this.api.updateActivo(item.id, { Nombre: item.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Activo actualizado&#x27;); },
+                    error: () &#x3D;&gt; this.showError(&#x27;Error al actualizar&#x27;)
+                });
+                break;
+            case &#x27;tarea&#x27;:
+                this.api.updateTarea(item.id, { descripcion: item.Nombre }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Tarea actualizada&#x27;); },
+                    error: () &#x3D;&gt; this.showError(&#x27;Error al actualizar&#x27;)
+                });
+                break;
+            case &#x27;usuario&#x27;:
+                // Detectar si el admin se esta autodemoviendo
+                const tokenData &#x3D; this.userService.getTokenPayload();
+                if (tokenData &amp;&amp; tokenData.mail &#x3D;&#x3D;&#x3D; item.Mail &amp;&amp; item.Rol !&#x3D;&#x3D; &#x27;administrador&#x27;) {
+                    this.showError(&#x27;No podes quitarte el rol de administrador a vos mismo&#x27;);
+                    this.loadAll();
+                    return;
+                }
+                this.api.updateUsuario(item.id, { nombre: item.Nombre, mail: item.Mail || &#x27;&#x27;, rol: item.Rol || &#x27;operario&#x27; }).subscribe({
+                    next: () &#x3D;&gt; { this.showSuccess(&#x27;Usuario actualizado&#x27;); },
+                    error: () &#x3D;&gt; this.showError(&#x27;Error al actualizar usuario&#x27;)
+                });
+                break;
+        }
+    }
+
+    confirmUserDelete(): void {
+        this.showUserDeleteDialog &#x3D; false;
+        this.api.deleteUsuario(this.pendingDeleteId, true).subscribe({
+            next: () &#x3D;&gt; {
+                this.showSuccess(&#x27;Usuario eliminado&#x27;);
+                this.loadAll();
+            },
+            error: () &#x3D;&gt; this.showError(&#x27;Error al eliminar usuario&#x27;)
+        });
+    }
+
+    cancelUserDelete(): void {
+        this.showUserDeleteDialog &#x3D; false;
+        this.pendingDeleteId &#x3D; 0;
+        this.pendingDeleteMessage &#x3D; &#x27;&#x27;;
+    }
+
+    handleAddError(err: { status?: number; error?: { message?: string } }): void {
+        if (err.status &#x3D;&#x3D;&#x3D; 409 || (err.error &amp;&amp; err.error.message &amp;&amp; err.error.message.includes(&#x27;Duplicate&#x27;))) {
+            this.showError(&#x27;Ya existe un registro con ese ID&#x27;);
+        } else {
+            this.showError(&#x27;Error al crear el registro&#x27;);
+        }
+    }
+
+    handleDeleteError(err: { status?: number }): void {
+        if (err.status &#x3D;&#x3D;&#x3D; 409) {
+            this.showError(&#x27;No se puede eliminar: tiene registros asociados&#x27;);
+        } else {
+            this.showError(&#x27;Error al eliminar&#x27;);
+        }
+    }
+
+    logout(): void {
+        localStorage.removeItem(&#x27;token&#x27;);
+        this.router.navigate([&#x27;/login&#x27;]);
+    }
+
+    showSuccess(message: string): void {
+        this.notificationMessage &#x3D; message;
+        this.notificationType &#x3D; &#x27;success&#x27;;
+        this.showNotification &#x3D; true;
+        setTimeout(() &#x3D;&gt; { this.showNotification &#x3D; false; }, 3000);
+    }
+
+    showError(message: string): void {
+        this.notificationMessage &#x3D; message;
+        this.notificationType &#x3D; &#x27;error&#x27;;
+        this.showNotification &#x3D; true;
+        setTimeout(() &#x3D;&gt; { this.showNotification &#x3D; false; }, 4000);
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-sidenav-container class&#x3D;&quot;main-container&quot;&gt;
+  &lt;mat-sidenav mode&#x3D;&quot;side&quot; opened class&#x3D;&quot;sidebar&quot;&gt;
+    &lt;div class&#x3D;&quot;sidebar-content&quot;&gt;
+      &lt;div class&#x3D;&quot;sidebar-header&quot;&gt;
+        &lt;img src&#x3D;&quot;assets/UTNLOGO.png&quot; alt&#x3D;&quot;Logo UTN&quot; class&#x3D;&quot;logo&quot;&gt;
+      &lt;/div&gt;
+
+      &lt;mat-nav-list class&#x3D;&quot;nav-list&quot;&gt;
+        &lt;a mat-list-item routerLink&#x3D;&quot;/ot&quot; routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+          &lt;mat-icon&gt;assignment&lt;/mat-icon&gt;
+          &lt;span&gt;Orden de Trabajo&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a mat-list-item routerLink&#x3D;&quot;/historial&quot; routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+          &lt;mat-icon&gt;history&lt;/mat-icon&gt;
+          &lt;span&gt;Historial&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a mat-list-item routerLink&#x3D;&quot;/gestion&quot; routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+          &lt;mat-icon&gt;settings&lt;/mat-icon&gt;
+          &lt;span&gt;Gestión&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a mat-list-item (click)&#x3D;&quot;logout()&quot; routerLink&#x3D;&quot;/login&quot;&gt;
+          &lt;mat-icon color&#x3D;&quot;warn&quot;&gt;logout&lt;/mat-icon&gt;
+          &lt;span&gt;Cerrar Sesión&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/mat-nav-list&gt;
+
+      &lt;div class&#x3D;&quot;stats-section&quot;&gt;
+        &lt;div class&#x3D;&quot;stat-card&quot;&gt;
+          &lt;mat-icon&gt;folder&lt;/mat-icon&gt;
+          &lt;div class&#x3D;&quot;stat-info&quot;&gt;
+            &lt;span class&#x3D;&quot;stat-label&quot;&gt;Secciones&lt;/span&gt;
+            &lt;span class&#x3D;&quot;stat-value&quot;&gt;{{ sections.length }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/mat-sidenav&gt;
+
+  &lt;mat-sidenav-content class&#x3D;&quot;main-content&quot;&gt;
+    &lt;mat-toolbar color&#x3D;&quot;primary&quot; class&#x3D;&quot;toolbar&quot;&gt;
+      &lt;mat-icon class&#x3D;&quot;toolbar-icon&quot;&gt;admin_panel_settings&lt;/mat-icon&gt;
+      &lt;span class&#x3D;&quot;toolbar-title&quot;&gt;Gestión de Activos&lt;/span&gt;
+      &lt;span class&#x3D;&quot;spacer&quot;&gt;&lt;/span&gt;
+      &lt;mat-chip class&#x3D;&quot;info-chip&quot;&gt;Sistema de Administración&lt;/mat-chip&gt;
+    &lt;/mat-toolbar&gt;
+
+    &lt;div *ngIf&#x3D;&quot;isLoading&quot; class&#x3D;&quot;spinner-overlay&quot;&gt;
+      &lt;mat-spinner diameter&#x3D;&quot;60&quot;&gt;&lt;/mat-spinner&gt;
+      &lt;p&gt;Cargando datos...&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;content-wrapper&quot; *ngIf&#x3D;&quot;!isLoading&quot;&gt;
+      &lt;mat-accordion class&#x3D;&quot;sections-accordion&quot;&gt;
+        &lt;mat-expansion-panel *ngFor&#x3D;&quot;let section of sections&quot; class&#x3D;&quot;section-panel&quot;&gt;
+          &lt;mat-expansion-panel-header&gt;
+            &lt;mat-panel-title class&#x3D;&quot;panel-title&quot;&gt;
+              &lt;mat-icon class&#x3D;&quot;panel-icon&quot;&gt;{{ getSectionIcon(section.name) }}&lt;/mat-icon&gt;
+              {{ section.name }}
+            &lt;/mat-panel-title&gt;
+            &lt;mat-panel-description class&#x3D;&quot;panel-description&quot;&gt;
+              {{ section.data.length }} registro(s)
+            &lt;/mat-panel-description&gt;
+          &lt;/mat-expansion-panel-header&gt;
+
+          &lt;div class&#x3D;&quot;panel-content&quot;&gt;
+            &lt;mat-card class&#x3D;&quot;add-card&quot; *ngIf&#x3D;&quot;section.key !&#x3D;&#x3D; &#x27;usuario&#x27;&quot;&gt;
+              &lt;mat-card-content&gt;
+                &lt;div class&#x3D;&quot;add-form&quot;&gt;
+                  &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;id-field&quot;&gt;
+                    &lt;mat-label&gt;ID&lt;/mat-label&gt;
+                    &lt;input matInput #newId type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;ID&quot;&gt;
+                    &lt;mat-icon matPrefix&gt;tag&lt;/mat-icon&gt;
+                  &lt;/mat-form-field&gt;
+
+                  &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;name-field&quot;&gt;
+                    &lt;mat-label&gt;Nombre&lt;/mat-label&gt;
+                    &lt;input matInput #newNombre type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Nombre&quot;&gt;
+                    &lt;mat-icon matPrefix&gt;label&lt;/mat-icon&gt;
+                  &lt;/mat-form-field&gt;
+
+                  &lt;button mat-raised-button color&#x3D;&quot;primary&quot;
+                    (click)&#x3D;&quot;add({id:newId.value, Nombre:newNombre.value}, section.key); newId.value&#x3D;&#x27;&#x27;; newNombre.value&#x3D;&#x27;&#x27;&quot;
+                    class&#x3D;&quot;add-btn&quot;&gt;
+                    &lt;mat-icon&gt;add_circle&lt;/mat-icon&gt;
+                    Agregar
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/mat-card-content&gt;
+            &lt;/mat-card&gt;
+
+            &lt;mat-card class&#x3D;&quot;table-card&quot;&gt;
+              &lt;div class&#x3D;&quot;table-container&quot;&gt;
+                &lt;table class&#x3D;&quot;modern-table&quot;&gt;
+                  &lt;thead&gt;
+                    &lt;tr&gt;
+                      &lt;th&gt;ID&lt;/th&gt;
+                      &lt;th&gt;Nombre&lt;/th&gt;
+                      &lt;th *ngIf&#x3D;&quot;section.key &#x3D;&#x3D;&#x3D; &#x27;usuario&#x27;&quot;&gt;Rol&lt;/th&gt;
+                      &lt;th&gt;Acciones&lt;/th&gt;
+                    &lt;/tr&gt;
+                  &lt;/thead&gt;
+                  &lt;tbody&gt;
+                    &lt;tr *ngFor&#x3D;&quot;let item of section.data&quot; class&#x3D;&quot;table-row&quot;&gt;
+                      &lt;td class&#x3D;&quot;id-cell&quot;&gt;{{ item.id }}&lt;/td&gt;
+                      &lt;td&gt;
+                        &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;inline-edit&quot;&gt;
+                          &lt;input matInput [(ngModel)]&#x3D;&quot;item.Nombre&quot;&gt;
+                        &lt;/mat-form-field&gt;
+                      &lt;/td&gt;
+                      &lt;td *ngIf&#x3D;&quot;section.key &#x3D;&#x3D;&#x3D; &#x27;usuario&#x27;&quot;&gt;
+                        &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;inline-edit&quot;&gt;
+                          &lt;mat-select [(ngModel)]&#x3D;&quot;item.Rol&quot; [disabled]&#x3D;&quot;item.Mail &#x3D;&#x3D;&#x3D; &#x27;admin@gmail.com&#x27;&quot;&gt;
+                            &lt;mat-option value&#x3D;&quot;operario&quot;
+                              [disabled]&#x3D;&quot;item.Mail &#x3D;&#x3D;&#x3D; &#x27;admin@gmail.com&#x27;&quot;&gt;Operario&lt;/mat-option&gt;
+                            &lt;mat-option value&#x3D;&quot;administrador&quot;&gt;Administrador&lt;/mat-option&gt;
+                          &lt;/mat-select&gt;
+                        &lt;/mat-form-field&gt;
+                      &lt;/td&gt;
+                      &lt;td class&#x3D;&quot;actions-cell&quot;&gt;
+                        &lt;button mat-icon-button color&#x3D;&quot;accent&quot; (click)&#x3D;&quot;update(item, section.key)&quot;
+                          matTooltip&#x3D;&quot;Guardar cambios&quot; class&#x3D;&quot;action-btn&quot;&gt;
+                          &lt;mat-icon&gt;save&lt;/mat-icon&gt;
+                        &lt;/button&gt;
+                        &lt;button mat-icon-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;remove(item.id, section.key)&quot;
+                          matTooltip&#x3D;&quot;Eliminar&quot; class&#x3D;&quot;action-btn&quot;
+                          *ngIf&#x3D;&quot;section.key !&#x3D;&#x3D; &#x27;usuario&#x27; || item.Mail !&#x3D;&#x3D; &#x27;admin@gmail.com&#x27;&quot;&gt;
+                          &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+                        &lt;/button&gt;
+                      &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr *ngIf&#x3D;&quot;section.data.length &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+                      &lt;td [attr.colspan]&#x3D;&quot;section.key &#x3D;&#x3D;&#x3D; &#x27;usuario&#x27; ? 4 : 3&quot; class&#x3D;&quot;no-data&quot;&gt;
+                        &lt;mat-icon&gt;inbox&lt;/mat-icon&gt;
+                        &lt;p&gt;No hay registros en esta sección&lt;/p&gt;
+                      &lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;/tbody&gt;
+                &lt;/table&gt;
+              &lt;/div&gt;
+            &lt;/mat-card&gt;
+          &lt;/div&gt;
+        &lt;/mat-expansion-panel&gt;
+      &lt;/mat-accordion&gt;
+    &lt;/div&gt;
+  &lt;/mat-sidenav-content&gt;
+&lt;/mat-sidenav-container&gt;
+
+&lt;div *ngIf&#x3D;&quot;showUserDeleteDialog&quot; class&#x3D;&quot;dialog-overlay&quot; (click)&#x3D;&quot;cancelUserDelete()&quot;&gt;
+  &lt;mat-card class&#x3D;&quot;delete-dialog&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+    &lt;mat-card-header class&#x3D;&quot;dialog-header&quot;&gt;
+      &lt;div class&#x3D;&quot;dialog-icon-wrap&quot;&gt;
+        &lt;mat-icon class&#x3D;&quot;dialog-icon&quot;&gt;warning&lt;/mat-icon&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;dialog-title-group&quot;&gt;
+        &lt;mat-card-title&gt;Confirmar eliminacion&lt;/mat-card-title&gt;
+        &lt;mat-card-subtitle&gt;{{ pendingDeleteMessage }}&lt;/mat-card-subtitle&gt;
+      &lt;/div&gt;
+    &lt;/mat-card-header&gt;
+    &lt;mat-card-content&gt;
+      &lt;p class&#x3D;&quot;warning-text&quot;&gt;Esta accion no se puede deshacer.&lt;/p&gt;
+    &lt;/mat-card-content&gt;
+    &lt;mat-card-actions class&#x3D;&quot;dialog-actions&quot;&gt;
+      &lt;button mat-button (click)&#x3D;&quot;cancelUserDelete()&quot;&gt;Cancelar&lt;/button&gt;
+      &lt;button mat-raised-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;confirmUserDelete()&quot;&gt;
+        &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+        Eliminar
+      &lt;/button&gt;
+    &lt;/mat-card-actions&gt;
+  &lt;/mat-card&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;notification&quot; *ngIf&#x3D;&quot;showNotification&quot; [ngClass]&#x3D;&quot;{
+    &#x27;success&#x27;: notificationType &#x3D;&#x3D;&#x3D; &#x27;success&#x27;,
+    &#x27;error&#x27;: notificationType &#x3D;&#x3D;&#x3D; &#x27;error&#x27;,
+    &#x27;info&#x27;: notificationType &#x3D;&#x3D;&#x3D; &#x27;info&#x27;
+  }&quot;&gt;
+  &lt;mat-icon&gt;{{ notificationType &#x3D;&#x3D;&#x3D; &#x27;success&#x27; ? &#x27;check_circle&#x27; : notificationType &#x3D;&#x3D;&#x3D; &#x27;error&#x27; ? &#x27;error&#x27; : &#x27;info&#x27;
+    }}&lt;/mat-icon&gt;
+  {{ notificationMessage }}
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./gestion.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.main-container {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+}
+
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 32px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.sidebar-title mat-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stat-card {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.stat-card mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+.main-content {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.toolbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 64px;
+}
+
+.toolbar-icon {
+  margin-right: 12px;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.toolbar-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.info-chip {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.content-wrapper {
+  padding: 24px;
+  animation: fadeIn 0.4s ease-in;
+  max-width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spinner-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 64px);
+  gap: 24px;
+}
+
+.spinner-overlay p {
+  font-size: 18px;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.sections-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-panel {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+  overflow: hidden;
+}
+
+.section-panel ::ng-deep .mat-expansion-panel-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  height: 64px;
+}
+
+.section-panel ::ng-deep .mat-expansion-panel-header:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%) !important;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.panel-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.panel-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.panel-content {
+  padding: 24px;
+  background-color: #fafafa;
+}
+
+.add-card {
+  margin-bottom: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background: white;
+}
+
+.add-form {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.id-field,
+.name-field {
+  margin: 0;
+}
+
+.add-btn {
+  height: 48px;
+  font-weight: 500;
+}
+
+.add-btn mat-icon {
+  margin-right: 8px;
+}
+
+.table-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.table-container {
+  overflow: visible;
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.modern-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.modern-table th {
+  padding: 18px 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modern-table tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.modern-table tbody tr:hover {
+  background-color: rgba(102, 126, 234, 0.05);
+}
+
+.modern-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.modern-table th:first-child,
+.modern-table td:first-child {
+  padding-left: 22px;
+}
+
+.modern-table th:last-child,
+.modern-table td:last-child {
+  padding-right: 22px;
+}
+
+.id-cell {
+  font-weight: 600;
+  color: #667eea;
+  width: 100px;
+}
+
+.inline-edit {
+  width: 100%;
+  margin: 0;
+}
+
+.inline-edit ::ng-deep .mat-mdc-text-field-wrapper {
+  padding: 0 10px;
+}
+
+.inline-edit ::ng-deep .mat-mdc-form-field-infix {
+  padding: 10px 2px;
+  min-height: auto;
+}
+
+.inline-edit ::ng-deep .mat-mdc-select-value,
+.inline-edit ::ng-deep .mdc-text-field__input {
+  padding-left: 2px;
+}
+
+.actions-cell {
+  text-align: right;
+  white-space: nowrap;
+  width: 140px;
+}
+
+.action-btn {
+  margin: 0 6px;
+  transition: transform 0.2s ease;
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+}
+
+.no-data {
+  text-align: center;
+  padding: 48px 24px;
+  color: #999;
+}
+
+.no-data mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.no-data p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in;
+}
+
+.delete-dialog {
+  min-width: 420px;
+  max-width: 520px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scale(0.9) translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.delete-dialog mat-card-header {
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.dialog-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.dialog-icon {
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
+  color: #fff;
+}
+
+.dialog-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.delete-dialog mat-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.delete-dialog mat-card-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  margin: 0;
+}
+
+.delete-dialog mat-card-content {
+  padding: 16px 22px 6px;
+}
+
+.delete-dialog mat-card-content p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.warning-text {
+  color: #c62828;
+  font-weight: 600;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 6px 22px 20px;
+}
+
+.dialog-actions button {
+  min-width: 120px;
+  border-radius: 10px;
+}
+
+.notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-family: &#x27;Roboto&#x27;, sans-serif;
+  font-weight: 500;
+  color: white;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideInRight 0.3s ease-out;
+  min-width: 250px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notification.success {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.notification.error {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.notification.info {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.notification mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+  }
+
+  .add-form {
+    grid-template-columns: 120px 1fr auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    z-index: 100;
+  }
+
+  .toolbar-title {
+    font-size: 16px;
+  }
+
+  .content-wrapper {
+    padding: 16px;
+  }
+
+  .add-form {
+    grid-template-columns: 1fr;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+
+  .delete-dialog {
+    min-width: 300px;
+    margin: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .notification {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    min-width: unset;
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-sidenav-container class="main-container">  <mat-sidenav mode="side" opened class="sidebar">    <div class="sidebar-content">      <div class="sidebar-header">        <img src="assets/UTNLOGO.png" alt="Logo UTN" class="logo">      </div>      <mat-nav-list class="nav-list">        <a mat-list-item routerLink="/ot" routerLinkActive="active-link">          <mat-icon>assignment</mat-icon>          <span>Orden de Trabajo</span>        </a>        <a mat-list-item routerLink="/historial" routerLinkActive="active-link">          <mat-icon>history</mat-icon>          <span>Historial</span>        </a>        <a mat-list-item routerLink="/gestion" routerLinkActive="active-link">          <mat-icon>settings</mat-icon>          <span>Gestión</span>        </a>        <a mat-list-item (click)="logout()" routerLink="/login">          <mat-icon color="warn">logout</mat-icon>          <span>Cerrar Sesión</span>        </a>      </mat-nav-list>      <div class="stats-section">        <div class="stat-card">          <mat-icon>folder</mat-icon>          <div class="stat-info">            <span class="stat-label">Secciones</span>            <span class="stat-value">{{ sections.length }}</span>          </div>        </div>      </div>    </div>  </mat-sidenav>  <mat-sidenav-content class="main-content">    <mat-toolbar color="primary" class="toolbar">      <mat-icon class="toolbar-icon">admin_panel_settings</mat-icon>      <span class="toolbar-title">Gestión de Activos</span>      <span class="spacer"></span>      <mat-chip class="info-chip">Sistema de Administración</mat-chip>    </mat-toolbar>    <div *ngIf="isLoading" class="spinner-overlay">      <mat-spinner diameter="60"></mat-spinner>      <p>Cargando datos...</p>    </div>    <div class="content-wrapper" *ngIf="!isLoading">      <mat-accordion class="sections-accordion">        <mat-expansion-panel *ngFor="let section of sections" class="section-panel">          <mat-expansion-panel-header>            <mat-panel-title class="panel-title">              <mat-icon class="panel-icon">{{ getSectionIcon(section.name) }}</mat-icon>              {{ section.name }}            </mat-panel-title>            <mat-panel-description class="panel-description">              {{ section.data.length }} registro(s)            </mat-panel-description>          </mat-expansion-panel-header>          <div class="panel-content">            <mat-card class="add-card" *ngIf="section.key !== \'usuario\'">              <mat-card-content>                <div class="add-form">                  <mat-form-field appearance="outline" class="id-field">                    <mat-label>ID</mat-label>                    <input matInput #newId type="text" placeholder="ID">                    <mat-icon matPrefix>tag</mat-icon>                  </mat-form-field>                  <mat-form-field appearance="outline" class="name-field">                    <mat-label>Nombre</mat-label>                    <input matInput #newNombre type="text" placeholder="Nombre">                    <mat-icon matPrefix>label</mat-icon>                  </mat-form-field>                  <button mat-raised-button color="primary"                    (click)="add({id:newId.value, Nombre:newNombre.value}, section.key); newId.value=\'\'; newNombre.value=\'\'"                    class="add-btn">                    <mat-icon>add_circle</mat-icon>                    Agregar                  </button>                </div>              </mat-card-content>            </mat-card>            <mat-card class="table-card">              <div class="table-container">                <table class="modern-table">                  <thead>                    <tr>                      <th>ID</th>                      <th>Nombre</th>                      <th *ngIf="section.key === \'usuario\'">Rol</th>                      <th>Acciones</th>                    </tr>                  </thead>                  <tbody>                    <tr *ngFor="let item of section.data" class="table-row">                      <td class="id-cell">{{ item.id }}</td>                      <td>                        <mat-form-field appearance="outline" class="inline-edit">                          <input matInput [(ngModel)]="item.Nombre">                        </mat-form-field>                      </td>                      <td *ngIf="section.key === \'usuario\'">                        <mat-form-field appearance="outline" class="inline-edit">                          <mat-select [(ngModel)]="item.Rol" [disabled]="item.Mail === \'admin@gmail.com\'">                            <mat-option value="operario"                              [disabled]="item.Mail === \'admin@gmail.com\'">Operario</mat-option>                            <mat-option value="administrador">Administrador</mat-option>                          </mat-select>                        </mat-form-field>                      </td>                      <td class="actions-cell">                        <button mat-icon-button color="accent" (click)="update(item, section.key)"                          matTooltip="Guardar cambios" class="action-btn">                          <mat-icon>save</mat-icon>                        </button>                        <button mat-icon-button color="warn" (click)="remove(item.id, section.key)"                          matTooltip="Eliminar" class="action-btn"                          *ngIf="section.key !== \'usuario\' || item.Mail !== \'admin@gmail.com\'">                          <mat-icon>delete</mat-icon>                        </button>                      </td>                    </tr>                    <tr *ngIf="section.data.length === 0">                      <td [attr.colspan]="section.key === \'usuario\' ? 4 : 3" class="no-data">                        <mat-icon>inbox</mat-icon>                        <p>No hay registros en esta sección</p>                      </td>                    </tr>                  </tbody>                </table>              </div>            </mat-card>          </div>        </mat-expansion-panel>      </mat-accordion>    </div>  </mat-sidenav-content></mat-sidenav-container><div *ngIf="showUserDeleteDialog" class="dialog-overlay" (click)="cancelUserDelete()">  <mat-card class="delete-dialog" (click)="$event.stopPropagation()">    <mat-card-header class="dialog-header">      <div class="dialog-icon-wrap">        <mat-icon class="dialog-icon">warning</mat-icon>      </div>      <div class="dialog-title-group">        <mat-card-title>Confirmar eliminacion</mat-card-title>        <mat-card-subtitle>{{ pendingDeleteMessage }}</mat-card-subtitle>      </div>    </mat-card-header>    <mat-card-content>      <p class="warning-text">Esta accion no se puede deshacer.</p>    </mat-card-content>    <mat-card-actions class="dialog-actions">      <button mat-button (click)="cancelUserDelete()">Cancelar</button>      <button mat-raised-button color="warn" (click)="confirmUserDelete()">        <mat-icon>delete</mat-icon>        Eliminar      </button>    </mat-card-actions>  </mat-card></div><div class="notification" *ngIf="showNotification" [ngClass]="{    \'success\': notificationType === \'success\',    \'error\': notificationType === \'error\',    \'info\': notificationType === \'info\'  }">  <mat-icon>{{ notificationType === \'success\' ? \'check_circle\' : notificationType === \'error\' ? \'error\' : \'info\'    }}</mat-icon>  {{ notificationMessage }}</div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AyudaDialogComponent', 'selector': 'app-ayuda-dialog'},{'name': 'GestionComponent', 'selector': 'app-gestion'},{'name': 'HistorialComponent', 'selector': 'app-historial'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'OrdenTrabajoComponent', 'selector': 'app-orden-trabajo'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GestionComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GestionComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
